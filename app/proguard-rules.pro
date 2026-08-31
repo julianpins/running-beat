@@ -1,0 +1,13 @@
+# Add project specific ProGuard rules here.
+# By default, the flags in this file are appended to flags specified
+# in C:\Users\Julian Pins\AppData\Local\Android\Sdk/tools/proguard/proguard-android.txt
+# You can edit the include path and order by changing the proguardFiles
+# directive in build.gradle.kts.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html#gradle
+
+# Add any Spotify-specific ProGuard rules if needed.
+-keep class com.spotify.** { *; }
+-keep interface com.spotify.** { *; }
+-dontwarn com.spotify.**
