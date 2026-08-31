@@ -1,79 +1,63 @@
 package com.example.runningbeat.data
 
 import android.content.Context
-import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.intPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import android.content.SharedPreferences
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
-private val Context.dataStore by preferencesDataStore(name = "user_settings")
+class SettingsRepository(context: Context) {
+    private val prefs: SharedPreferences = context.getSharedPreferences("runningbeat_settings", Context.MODE_PRIVATE)
 
-class SettingsRepository(private val context: Context) {
+    private val _minBpmFlow = MutableStateFlow(prefs.getInt("min_bpm", 145))
+    val minBpmFlow: StateFlow<Int> = _minBpmFlow.asStateFlow()
 
-    companion object {
-        val MIN_BPM_KEY = intPreferencesKey("min_bpm")
-        val MAX_BPM_KEY = intPreferencesKey("max_bpm")
-        val STARTING_BPM_KEY = intPreferencesKey("starting_bpm")
-        val ALLOW_SKIPPING_KEY = booleanPreferencesKey("allow_skipping_bpm_change")
-        val BPM_DIFF_SWITCH_KEY = intPreferencesKey("bpm_diff_switch")
-        val SWITCH_DELAY_SECONDS_KEY = intPreferencesKey("switch_delay_seconds")
-        val USE_FALLBACK_TRACKS_KEY = booleanPreferencesKey("use_fallback_tracks_when_missing")
+    private val _maxBpmFlow = MutableStateFlow(prefs.getInt("max_bpm", 165))
+    val maxBpmFlow: StateFlow<Int> = _maxBpmFlow.asStateFlow()
+
+    private val _startingBpmFlow = MutableStateFlow(prefs.getInt("starting_bpm", 155))
+    val startingBpmFlow: StateFlow<Int> = _startingBpmFlow.asStateFlow()
+
+    private val _allowSkippingFlow = MutableStateFlow(prefs.getBoolean("allow_skipping", true))
+    val allowSkippingFlow: StateFlow<Boolean> = _allowSkippingFlow.asStateFlow()
+
+    private val _bpmDiffSwitchFlow = MutableStateFlow(prefs.getInt("bpm_diff_switch", 4))
+    val bpmDiffSwitchFlow: StateFlow<Int> = _bpmDiffSwitchFlow.asStateFlow()
+
+    private val _switchDelaySecondsFlow = MutableStateFlow(prefs.getInt("switch_delay_seconds", 7))
+    val switchDelaySecondsFlow: StateFlow<Int> = _switchDelaySecondsFlow.asStateFlow()
+
+    private val _useFallbackTracksFlow = MutableStateFlow(prefs.getBoolean("use_fallback_tracks", true))
+    val useFallbackTracksFlow: StateFlow<Boolean> = _useFallbackTracksFlow.asStateFlow()
+
+    fun saveBpmWindow(min: Int, max: Int) {
+        prefs.edit().putInt("min_bpm", min).putInt("max_bpm", max).apply()
+        _minBpmFlow.value = min
+        _maxBpmFlow.value = max
     }
 
-    val minBpmFlow: Flow<Int> = context.dataStore.data.map { prefs ->
-        prefs[MIN_BPM_KEY] ?: 130
+    fun saveStartingBpm(value: Int) {
+        prefs.edit().putInt("starting_bpm", value).apply()
+        _startingBpmFlow.value = value
     }
 
-    val maxBpmFlow: Flow<Int> = context.dataStore.data.map { prefs ->
-        prefs[MAX_BPM_KEY] ?: 165
+    fun saveAllowSkipping(value: Boolean) {
+        prefs.edit().putBoolean("allow_skipping", value).apply()
+        _allowSkippingFlow.value = value
     }
 
-    val startingBpmFlow: Flow<Int> = context.dataStore.data.map { prefs ->
-        prefs[STARTING_BPM_KEY] ?: 155
+    fun saveBpmDiffSwitch(value: Int) {
+        prefs.edit().putInt("bpm_diff_switch", value).apply()
+        _bpmDiffSwitchFlow.value = value
     }
 
-    val allowSkippingFlow: Flow<Boolean> = context.dataStore.data.map { prefs ->
-        prefs[ALLOW_SKIPPING_KEY] ?: true
+    fun saveSwitchDelaySeconds(value: Int) {
+        prefs.edit().putInt("switch_delay_seconds", value).apply()
+        _switchDelaySecondsFlow.value = value
     }
 
-    val bpmDiffSwitchFlow: Flow<Int> = context.dataStore.data.map { prefs ->
-        prefs[BPM_DIFF_SWITCH_KEY] ?: 4
-    }
-
-    val switchDelaySecondsFlow: Flow<Int> = context.dataStore.data.map { prefs ->
-        prefs[SWITCH_DELAY_SECONDS_KEY] ?: 7
-    }
-
-    val useFallbackTracksFlow: Flow<Boolean> = context.dataStore.data.map { prefs ->
-        prefs[USE_FALLBACK_TRACKS_KEY] ?: true
-    }
-
-    suspend fun saveBpmWindow(minBpm: Int, maxBpm: Int) {
-        context.dataStore.edit { prefs ->
-            prefs[MIN_BPM_KEY] = minBpm
-            prefs[MAX_BPM_KEY] = maxBpm
-        }
-    }
-
-    suspend fun saveStartingBpm(bpm: Int) {
-        context.dataStore.edit { prefs -> prefs[STARTING_BPM_KEY] = bpm }
-    }
-
-    suspend fun saveAllowSkipping(allow: Boolean) {
-        context.dataStore.edit { prefs -> prefs[ALLOW_SKIPPING_KEY] = allow }
-    }
-
-    suspend fun saveBpmDiffSwitch(diff: Int) {
-        context.dataStore.edit { prefs -> prefs[BPM_DIFF_SWITCH_KEY] = diff }
-    }
-
-    suspend fun saveSwitchDelaySeconds(seconds: Int) {
-        context.dataStore.edit { prefs -> prefs[SWITCH_DELAY_SECONDS_KEY] = seconds }
-    }
-
-    suspend fun saveUseFallbackTracks(useFallback: Boolean) {
-        context.dataStore.edit { prefs -> prefs[USE_FALLBACK_TRACKS_KEY] = useFallback }
+    fun saveUseFallbackTracks(value: Boolean) {
+        prefs.edit().putBoolean("use_fallback_tracks", value).apply()
+        _useFallbackTracksFlow.value = value
     }
 }

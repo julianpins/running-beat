@@ -1,0 +1,532 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:2:1-56:12
+INJECTED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:2:1-56:12
+INJECTED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:2:1-56:12
+INJECTED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:2:1-56:12
+MERGED from [spotify-app-remote-release-0.8.0.aar] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\55dc71da6672eb631190d75c6e7c9ef6\transformed\spotify-app-remote-release-0.8.0\AndroidManifest.xml:22:1-36:12
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\dfe9a9e3c1c7ecedac4e86718e68d5bc\transformed\room-runtime-2.6.1\AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.room:room-ktx:2.6.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\aba8878699fc75aab5adc1a9311ee575\transformed\room-ktx-2.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7d57455551c79e90394f77cb9ccc096c\transformed\sqlite-framework-2.4.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite:2.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\31fe2832af6a73ab502ee1440ab4e2e3\transformed\sqlite-2.4.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.8] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\77c846237221fc14989095c0de236311\transformed\material-icons-extended-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.8] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\1e61ae9d4f737b432e6fc253e56b37ca\transformed\material-icons-core-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material3:material3-android:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\d6e41e58017121a7d00fdbdb171cb67f\transformed\material3\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.material:material-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6908db823e18467f63084846cfcefd72\transformed\material\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-ripple-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e07b32ea1a831b07b9a58cb9fa565451\transformed\material-ripple\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\74ec2463b8f3316da193408d1610e387\transformed\foundation\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e696fa9dd58cc5dafcbc2745f4a1af85\transformed\animation\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\49c35ec2594fec3ab8864225d0a5dc0b\transformed\foundation-layout\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-core-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\5b2279ab2c880584e7527375eeb9674b\transformed\animation-core\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\13623b0f8ac2c110843b5d88fea1bbdb\transformed\ui-tooling-data\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-unit-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e77ee0ef7804704403e69d04a43869a3\transformed\ui-unit\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-geometry-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\8473d2fc2c41009341b7b4ce8ea7d4c5\transformed\ui-geometry\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-util-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\cbf24eb25ee0c36c629b97d639233988\transformed\ui-util\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-text-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\07c5ed3536473f81000b228170fb213d\transformed\ui-text\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\64eb8f8cf852d1466ee61a056f947842\transformed\ui-tooling-preview\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.ui:ui-tooling-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\25b25643fe9a0c0823ee00b7d51ab5ee\transformed\ui-tooling\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.compose.ui:ui-graphics-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c4c4b024d66253d8d04f59e165d6a0e3\transformed\ui-graphics\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\11194394687cf7cb2a803b3755d82135\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:17:1-29:12
+MERGED from [androidx.activity:activity:1.8.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\9441f4a0518f5a5e78641c35f6e918d6\transformed\activity-1.8.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-ktx:1.8.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e793f71d334b32a52606cbc63003d91f\transformed\activity-ktx-1.8.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity-compose:1.8.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\5c5db0a9c359f1d459b9cb88ae7959d2\transformed\activity-compose-1.8.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\44d609e259d0b3a732dfe6a88d1255a8\transformed\ui\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-retain-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\654d2eab951feff2a502e59ae1438d7f\transformed\runtime-retain\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-annotation-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\d6e8a4819b16a0f4f2adfcb857213c7d\transformed\runtime-annotation\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\d91941f6c97375da9b3bbb70f7787a20\transformed\runtime-saveable\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7880ada7fc88ea81f76827e5a5457791\transformed\emoji2-1.4.0\AndroidManifest.xml:17:1-35:12
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:22:1-66:12
+MERGED from [androidx.browser:browser:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e9cc24efd3f57818f4e4cf8f5b57292a\transformed\browser-1.4.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\4d5da00092e552628621ac60981ede48\transformed\autofill-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.6.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\701e52a4fde4c54aab5ff9d5e79e83da\transformed\transition-1.6.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.window:window-core-android:1.5.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c0d2e7fe1c70fb5cabd54489b7be5a6c\transformed\window-core\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.window:window:1.5.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6aee81e36d6da51cdaf3c271005139d8\transformed\window-1.5.0\AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7f6a0046c8915504600b25109c876795\transformed\graphics-path-1.0.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\886dcdfddc54340194f367340ce2e875\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.core:core-ktx:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\b4b9fd948d9e40add88617242941d19d\transformed\core-ktx-1.16.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\4b5ec1846d6a062ca2a2f4ef8f6e708e\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\76381f24cd5e5b35c065b78b427305ed\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\672355d4034f01ab2ea2e76054c634c4\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\29602805ab5d5b24266cd01a17a475a8\transformed\lifecycle-livedata-core-ktx-2.9.4\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\41ca644218d85d7cd9d4459ad9f71794\transformed\lifecycle-livedata-2.9.4\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\12d02e4afdf42feb84e2b0ffb4baf986\transformed\lifecycle-livedata-core-2.9.4\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\8f243da48149990c18ccf41276eaa4bb\transformed\lifecycle-viewmodel-2.9.4\AndroidManifest.xml:2:1-5:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\69cd2166943bd44834d7fe910432ed4f\transformed\lifecycle-viewmodel-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\a3ac5d55d4f72a76f55ca61526fb8a5d\transformed\lifecycle-runtime-ktx\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\3acc2a2dc46076e93f55679f6cbb57a3\transformed\lifecycle-runtime-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\84800341ecbd0640e2b92889df6d276f\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6e48d10e65d2d5bbbc2f50dd02cee2e6\transformed\lifecycle-viewmodel-ktx-2.9.4\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\3d02a816a087f0672a4836d5a282ff2f\transformed\lifecycle-runtime-compose-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e73fde725797611cac867175880f3f5b\transformed\lifecycle-viewmodel-savedstate-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate-android:1.3.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\3bcca655001a60ec0e53202c5c7713bc\transformed\savedstate-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.3.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\4aa222be63a7c46a4df115bc2a330734\transformed\savedstate-ktx-1.3.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.savedstate:savedstate-compose-android:1.3.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\4d14612906cca15fe71beacaec8358c9\transformed\savedstate-compose\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\1f0aaf36a21edaa090fd4b5a40206e45\transformed\runtime\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\9f17dc403ecec1dcde45c4627b81c9fe\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\9c7911474c8c4897f0febd0aeee23c74\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.core:core-viewtree:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\cd74d0361b77c93467afcd388507f129\transformed\core-viewtree-1.0.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ebf3380ca09636729d51d9308e18f060\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c528dc1eb7eca06585276715394d5b02\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c717397bf8af61b31ad66f3c466bf615\transformed\startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\88948a0631100075375e86ed732cf3f4\transformed\tracing-1.2.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\b9db760d2eefce5ed0ece52ae5668259\transformed\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\a09e361aa76b0d82253da1af2ac8d9e8\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\eb7520dfef1ea7425f37ce661c8b4204\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
+	package
+		INJECTED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:5:5-67
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:29:5-67
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:29:5-67
+	android:name
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:5:22-64
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:6:5-77
+	android:name
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:6:22-74
+uses-permission#android.permission.FOREGROUND_SERVICE_SPECIAL_USE
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:7:5-89
+	android:name
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:7:22-86
+uses-permission#android.permission.ACTIVITY_RECOGNITION
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:8:22-76
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:9:5-77
+	android:name
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:9:22-74
+application
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:11:5-54:19
+INJECTED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:11:5-54:19
+MERGED from [spotify-app-remote-release-0.8.0.aar] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\55dc71da6672eb631190d75c6e7c9ef6\transformed\spotify-app-remote-release-0.8.0\AndroidManifest.xml:34:5-20
+MERGED from [spotify-app-remote-release-0.8.0.aar] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\55dc71da6672eb631190d75c6e7c9ef6\transformed\spotify-app-remote-release-0.8.0\AndroidManifest.xml:34:5-20
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\dfe9a9e3c1c7ecedac4e86718e68d5bc\transformed\room-runtime-2.6.1\AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\dfe9a9e3c1c7ecedac4e86718e68d5bc\transformed\room-runtime-2.6.1\AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\25b25643fe9a0c0823ee00b7d51ab5ee\transformed\ui-tooling\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\25b25643fe9a0c0823ee00b7d51ab5ee\transformed\ui-tooling\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\11194394687cf7cb2a803b3755d82135\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:22:5-27:19
+MERGED from [androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\11194394687cf7cb2a803b3755d82135\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:22:5-27:19
+MERGED from [androidx.emoji2:emoji2:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7880ada7fc88ea81f76827e5a5457791\transformed\emoji2-1.4.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7880ada7fc88ea81f76827e5a5457791\transformed\emoji2-1.4.0\AndroidManifest.xml:23:5-33:19
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:47:5-64:19
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:47:5-64:19
+MERGED from [androidx.window:window:1.5.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6aee81e36d6da51cdaf3c271005139d8\transformed\window-1.5.0\AndroidManifest.xml:22:5-29:19
+MERGED from [androidx.window:window:1.5.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6aee81e36d6da51cdaf3c271005139d8\transformed\window-1.5.0\AndroidManifest.xml:22:5-29:19
+MERGED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\84800341ecbd0640e2b92889df6d276f\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\84800341ecbd0640e2b92889df6d276f\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\9c7911474c8c4897f0febd0aeee23c74\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\9c7911474c8c4897f0febd0aeee23c74\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c717397bf8af61b31ad66f3c466bf615\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c717397bf8af61b31ad66f3c466bf615\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+	android:extractNativeLibs
+		INJECTED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:16:9-35
+	android:label
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:14:9-41
+	android:roundIcon
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:15:9-54
+	android:icon
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:13:9-43
+	android:allowBackup
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:12:9-35
+	android:theme
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:17:9-49
+	tools:replace
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:18:9-85
+activity#com.example.runningbeat.ui.MainActivity
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:20:9-27:20
+	android:exported
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:22:13-36
+	android:name
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:21:13-44
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:23:13-26:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:24:17-69
+	android:name
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:24:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:25:17-77
+	android:name
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:25:27-74
+service#com.example.runningbeat.service.StepTrackerService
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:29:9-37:19
+	android:enabled
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:31:13-35
+	android:exported
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:32:13-37
+	tools:replace
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:34:13-58
+	android:foregroundServiceType
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:33:13-55
+	android:name
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:30:13-55
+property#android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:35:13-36:78
+	android:value
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:36:17-75
+	android:name
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:35:23-82
+activity#com.spotify.sdk.android.auth.LoginActivity
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:39:9-52:20
+REJECTED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:48:9-63:20
+	tools:node
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:41:13-33
+	android:exported
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:42:13-36
+	android:theme
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:43:13-72
+	android:name
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:40:13-70
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:callback+data:scheme:cadencerunner
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:44:13-51:29
+action#android.intent.action.VIEW
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:45:17-69
+	android:name
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:45:25-66
+category#android.intent.category.DEFAULT
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:46:17-76
+	android:name
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:46:27-73
+category#android.intent.category.BROWSABLE
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:47:17-78
+	android:name
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:47:27-75
+data
+ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:48:17-50:54
+	android:host
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:49:21-44
+	android:scheme
+		ADDED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml:50:21-51
+uses-sdk
+INJECTED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml
+MERGED from [spotify-app-remote-release-0.8.0.aar] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\55dc71da6672eb631190d75c6e7c9ef6\transformed\spotify-app-remote-release-0.8.0\AndroidManifest.xml:25:5-44
+MERGED from [spotify-app-remote-release-0.8.0.aar] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\55dc71da6672eb631190d75c6e7c9ef6\transformed\spotify-app-remote-release-0.8.0\AndroidManifest.xml:25:5-44
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\dfe9a9e3c1c7ecedac4e86718e68d5bc\transformed\room-runtime-2.6.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\dfe9a9e3c1c7ecedac4e86718e68d5bc\transformed\room-runtime-2.6.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-ktx:2.6.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\aba8878699fc75aab5adc1a9311ee575\transformed\room-ktx-2.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-ktx:2.6.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\aba8878699fc75aab5adc1a9311ee575\transformed\room-ktx-2.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7d57455551c79e90394f77cb9ccc096c\transformed\sqlite-framework-2.4.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7d57455551c79e90394f77cb9ccc096c\transformed\sqlite-framework-2.4.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\31fe2832af6a73ab502ee1440ab4e2e3\transformed\sqlite-2.4.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\31fe2832af6a73ab502ee1440ab4e2e3\transformed\sqlite-2.4.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.8] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\77c846237221fc14989095c0de236311\transformed\material-icons-extended-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.8] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\77c846237221fc14989095c0de236311\transformed\material-icons-extended-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.8] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\1e61ae9d4f737b432e6fc253e56b37ca\transformed\material-icons-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.8] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\1e61ae9d4f737b432e6fc253e56b37ca\transformed\material-icons-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material3:material3-android:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\d6e41e58017121a7d00fdbdb171cb67f\transformed\material3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3-android:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\d6e41e58017121a7d00fdbdb171cb67f\transformed\material3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material:material-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6908db823e18467f63084846cfcefd72\transformed\material\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6908db823e18467f63084846cfcefd72\transformed\material\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e07b32ea1a831b07b9a58cb9fa565451\transformed\material-ripple\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e07b32ea1a831b07b9a58cb9fa565451\transformed\material-ripple\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\74ec2463b8f3316da193408d1610e387\transformed\foundation\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\74ec2463b8f3316da193408d1610e387\transformed\foundation\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e696fa9dd58cc5dafcbc2745f4a1af85\transformed\animation\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e696fa9dd58cc5dafcbc2745f4a1af85\transformed\animation\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\49c35ec2594fec3ab8864225d0a5dc0b\transformed\foundation-layout\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\49c35ec2594fec3ab8864225d0a5dc0b\transformed\foundation-layout\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\5b2279ab2c880584e7527375eeb9674b\transformed\animation-core\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\5b2279ab2c880584e7527375eeb9674b\transformed\animation-core\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\13623b0f8ac2c110843b5d88fea1bbdb\transformed\ui-tooling-data\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\13623b0f8ac2c110843b5d88fea1bbdb\transformed\ui-tooling-data\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e77ee0ef7804704403e69d04a43869a3\transformed\ui-unit\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e77ee0ef7804704403e69d04a43869a3\transformed\ui-unit\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\8473d2fc2c41009341b7b4ce8ea7d4c5\transformed\ui-geometry\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\8473d2fc2c41009341b7b4ce8ea7d4c5\transformed\ui-geometry\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\cbf24eb25ee0c36c629b97d639233988\transformed\ui-util\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\cbf24eb25ee0c36c629b97d639233988\transformed\ui-util\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\07c5ed3536473f81000b228170fb213d\transformed\ui-text\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\07c5ed3536473f81000b228170fb213d\transformed\ui-text\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\64eb8f8cf852d1466ee61a056f947842\transformed\ui-tooling-preview\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\64eb8f8cf852d1466ee61a056f947842\transformed\ui-tooling-preview\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\25b25643fe9a0c0823ee00b7d51ab5ee\transformed\ui-tooling\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\25b25643fe9a0c0823ee00b7d51ab5ee\transformed\ui-tooling\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c4c4b024d66253d8d04f59e165d6a0e3\transformed\ui-graphics\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c4c4b024d66253d8d04f59e165d6a0e3\transformed\ui-graphics\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\11194394687cf7cb2a803b3755d82135\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\11194394687cf7cb2a803b3755d82135\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.8.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\9441f4a0518f5a5e78641c35f6e918d6\transformed\activity-1.8.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.8.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\9441f4a0518f5a5e78641c35f6e918d6\transformed\activity-1.8.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-ktx:1.8.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e793f71d334b32a52606cbc63003d91f\transformed\activity-ktx-1.8.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.8.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e793f71d334b32a52606cbc63003d91f\transformed\activity-ktx-1.8.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.8.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\5c5db0a9c359f1d459b9cb88ae7959d2\transformed\activity-compose-1.8.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.8.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\5c5db0a9c359f1d459b9cb88ae7959d2\transformed\activity-compose-1.8.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\44d609e259d0b3a732dfe6a88d1255a8\transformed\ui\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\44d609e259d0b3a732dfe6a88d1255a8\transformed\ui\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-retain-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\654d2eab951feff2a502e59ae1438d7f\transformed\runtime-retain\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-retain-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\654d2eab951feff2a502e59ae1438d7f\transformed\runtime-retain\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-annotation-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\d6e8a4819b16a0f4f2adfcb857213c7d\transformed\runtime-annotation\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-annotation-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\d6e8a4819b16a0f4f2adfcb857213c7d\transformed\runtime-annotation\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\d91941f6c97375da9b3bbb70f7787a20\transformed\runtime-saveable\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\d91941f6c97375da9b3bbb70f7787a20\transformed\runtime-saveable\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7880ada7fc88ea81f76827e5a5457791\transformed\emoji2-1.4.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7880ada7fc88ea81f76827e5a5457791\transformed\emoji2-1.4.0\AndroidManifest.xml:21:5-44
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:25:5-27:41
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:25:5-27:41
+MERGED from [androidx.browser:browser:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e9cc24efd3f57818f4e4cf8f5b57292a\transformed\browser-1.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e9cc24efd3f57818f4e4cf8f5b57292a\transformed\browser-1.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\4d5da00092e552628621ac60981ede48\transformed\autofill-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\4d5da00092e552628621ac60981ede48\transformed\autofill-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.6.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\701e52a4fde4c54aab5ff9d5e79e83da\transformed\transition-1.6.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.transition:transition:1.6.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\701e52a4fde4c54aab5ff9d5e79e83da\transformed\transition-1.6.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.window:window-core-android:1.5.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c0d2e7fe1c70fb5cabd54489b7be5a6c\transformed\window-core\AndroidManifest.xml:5:5-44
+MERGED from [androidx.window:window-core-android:1.5.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c0d2e7fe1c70fb5cabd54489b7be5a6c\transformed\window-core\AndroidManifest.xml:5:5-44
+MERGED from [androidx.window:window:1.5.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6aee81e36d6da51cdaf3c271005139d8\transformed\window-1.5.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.window:window:1.5.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6aee81e36d6da51cdaf3c271005139d8\transformed\window-1.5.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7f6a0046c8915504600b25109c876795\transformed\graphics-path-1.0.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7f6a0046c8915504600b25109c876795\transformed\graphics-path-1.0.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\886dcdfddc54340194f367340ce2e875\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\886dcdfddc54340194f367340ce2e875\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.core:core-ktx:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\b4b9fd948d9e40add88617242941d19d\transformed\core-ktx-1.16.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\b4b9fd948d9e40add88617242941d19d\transformed\core-ktx-1.16.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\4b5ec1846d6a062ca2a2f4ef8f6e708e\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\4b5ec1846d6a062ca2a2f4ef8f6e708e\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\76381f24cd5e5b35c065b78b427305ed\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\76381f24cd5e5b35c065b78b427305ed\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\672355d4034f01ab2ea2e76054c634c4\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\672355d4034f01ab2ea2e76054c634c4\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\29602805ab5d5b24266cd01a17a475a8\transformed\lifecycle-livedata-core-ktx-2.9.4\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\29602805ab5d5b24266cd01a17a475a8\transformed\lifecycle-livedata-core-ktx-2.9.4\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\41ca644218d85d7cd9d4459ad9f71794\transformed\lifecycle-livedata-2.9.4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\41ca644218d85d7cd9d4459ad9f71794\transformed\lifecycle-livedata-2.9.4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\12d02e4afdf42feb84e2b0ffb4baf986\transformed\lifecycle-livedata-core-2.9.4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\12d02e4afdf42feb84e2b0ffb4baf986\transformed\lifecycle-livedata-core-2.9.4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\8f243da48149990c18ccf41276eaa4bb\transformed\lifecycle-viewmodel-2.9.4\AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\8f243da48149990c18ccf41276eaa4bb\transformed\lifecycle-viewmodel-2.9.4\AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\69cd2166943bd44834d7fe910432ed4f\transformed\lifecycle-viewmodel-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\69cd2166943bd44834d7fe910432ed4f\transformed\lifecycle-viewmodel-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\a3ac5d55d4f72a76f55ca61526fb8a5d\transformed\lifecycle-runtime-ktx\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\a3ac5d55d4f72a76f55ca61526fb8a5d\transformed\lifecycle-runtime-ktx\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\3acc2a2dc46076e93f55679f6cbb57a3\transformed\lifecycle-runtime-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\3acc2a2dc46076e93f55679f6cbb57a3\transformed\lifecycle-runtime-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\84800341ecbd0640e2b92889df6d276f\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\84800341ecbd0640e2b92889df6d276f\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6e48d10e65d2d5bbbc2f50dd02cee2e6\transformed\lifecycle-viewmodel-ktx-2.9.4\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6e48d10e65d2d5bbbc2f50dd02cee2e6\transformed\lifecycle-viewmodel-ktx-2.9.4\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\3d02a816a087f0672a4836d5a282ff2f\transformed\lifecycle-runtime-compose-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\3d02a816a087f0672a4836d5a282ff2f\transformed\lifecycle-runtime-compose-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e73fde725797611cac867175880f3f5b\transformed\lifecycle-viewmodel-savedstate-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\e73fde725797611cac867175880f3f5b\transformed\lifecycle-viewmodel-savedstate-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-android:1.3.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\3bcca655001a60ec0e53202c5c7713bc\transformed\savedstate-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-android:1.3.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\3bcca655001a60ec0e53202c5c7713bc\transformed\savedstate-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.3.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\4aa222be63a7c46a4df115bc2a330734\transformed\savedstate-ktx-1.3.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.3.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\4aa222be63a7c46a4df115bc2a330734\transformed\savedstate-ktx-1.3.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-compose-android:1.3.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\4d14612906cca15fe71beacaec8358c9\transformed\savedstate-compose\AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-compose-android:1.3.2] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\4d14612906cca15fe71beacaec8358c9\transformed\savedstate-compose\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\1f0aaf36a21edaa090fd4b5a40206e45\transformed\runtime\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\1f0aaf36a21edaa090fd4b5a40206e45\transformed\runtime\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\9f17dc403ecec1dcde45c4627b81c9fe\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\9f17dc403ecec1dcde45c4627b81c9fe\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\9c7911474c8c4897f0febd0aeee23c74\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\9c7911474c8c4897f0febd0aeee23c74\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-viewtree:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\cd74d0361b77c93467afcd388507f129\transformed\core-viewtree-1.0.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-viewtree:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\cd74d0361b77c93467afcd388507f129\transformed\core-viewtree-1.0.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ebf3380ca09636729d51d9308e18f060\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ebf3380ca09636729d51d9308e18f060\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c528dc1eb7eca06585276715394d5b02\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c528dc1eb7eca06585276715394d5b02\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c717397bf8af61b31ad66f3c466bf615\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c717397bf8af61b31ad66f3c466bf615\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\88948a0631100075375e86ed732cf3f4\transformed\tracing-1.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\88948a0631100075375e86ed732cf3f4\transformed\tracing-1.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\b9db760d2eefce5ed0ece52ae5668259\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\b9db760d2eefce5ed0ece52ae5668259\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\a09e361aa76b0d82253da1af2ac8d9e8\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\a09e361aa76b0d82253da1af2ac8d9e8\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\eb7520dfef1ea7425f37ce661c8b4204\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\eb7520dfef1ea7425f37ce661c8b4204\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\src\main\AndroidManifest.xml
+queries
+ADDED from [spotify-app-remote-release-0.8.0.aar] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\55dc71da6672eb631190d75c6e7c9ef6\transformed\spotify-app-remote-release-0.8.0\AndroidManifest.xml:27:5-32:15
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:31:5-45:15
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:31:5-45:15
+package#com.spotify.music
+ADDED from [spotify-app-remote-release-0.8.0.aar] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\55dc71da6672eb631190d75c6e7c9ef6\transformed\spotify-app-remote-release-0.8.0\AndroidManifest.xml:28:9-53
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:32:9-53
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:32:9-53
+	android:name
+		ADDED from [spotify-app-remote-release-0.8.0.aar] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\55dc71da6672eb631190d75c6e7c9ef6\transformed\spotify-app-remote-release-0.8.0\AndroidManifest.xml:28:18-50
+package#com.spotify.music.debug
+ADDED from [spotify-app-remote-release-0.8.0.aar] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\55dc71da6672eb631190d75c6e7c9ef6\transformed\spotify-app-remote-release-0.8.0\AndroidManifest.xml:29:9-59
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:33:9-59
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:33:9-59
+	android:name
+		ADDED from [spotify-app-remote-release-0.8.0.aar] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\55dc71da6672eb631190d75c6e7c9ef6\transformed\spotify-app-remote-release-0.8.0\AndroidManifest.xml:29:18-56
+package#com.spotify.music.canary
+ADDED from [spotify-app-remote-release-0.8.0.aar] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\55dc71da6672eb631190d75c6e7c9ef6\transformed\spotify-app-remote-release-0.8.0\AndroidManifest.xml:30:9-60
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:34:9-60
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:34:9-60
+	android:name
+		ADDED from [spotify-app-remote-release-0.8.0.aar] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\55dc71da6672eb631190d75c6e7c9ef6\transformed\spotify-app-remote-release-0.8.0\AndroidManifest.xml:30:18-57
+package#com.spotify.music.partners
+ADDED from [spotify-app-remote-release-0.8.0.aar] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\55dc71da6672eb631190d75c6e7c9ef6\transformed\spotify-app-remote-release-0.8.0\AndroidManifest.xml:31:9-62
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:35:9-62
+MERGED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:35:9-62
+	android:name
+		ADDED from [spotify-app-remote-release-0.8.0.aar] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\55dc71da6672eb631190d75c6e7c9ef6\transformed\spotify-app-remote-release-0.8.0\AndroidManifest.xml:31:18-59
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\dfe9a9e3c1c7ecedac4e86718e68d5bc\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\dfe9a9e3c1c7ecedac4e86718e68d5bc\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+	tools:ignore
+		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\dfe9a9e3c1c7ecedac4e86718e68d5bc\transformed\room-runtime-2.6.1\AndroidManifest.xml:28:13-60
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\dfe9a9e3c1c7ecedac4e86718e68d5bc\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\dfe9a9e3c1c7ecedac4e86718e68d5bc\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+activity#androidx.compose.ui.tooling.PreviewActivity
+ADDED from [androidx.compose.ui:ui-tooling-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\25b25643fe9a0c0823ee00b7d51ab5ee\transformed\ui-tooling\AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\25b25643fe9a0c0823ee00b7d51ab5ee\transformed\ui-tooling\AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\25b25643fe9a0c0823ee00b7d51ab5ee\transformed\ui-tooling\AndroidManifest.xml:24:13-71
+activity#androidx.activity.ComponentActivity
+ADDED from [androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\11194394687cf7cb2a803b3755d82135\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:23:9-26:79
+	android:exported
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\11194394687cf7cb2a803b3755d82135\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:25:13-36
+	android:theme
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\11194394687cf7cb2a803b3755d82135\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:26:13-76
+	android:name
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\11194394687cf7cb2a803b3755d82135\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:24:13-63
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7880ada7fc88ea81f76827e5a5457791\transformed\emoji2-1.4.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\84800341ecbd0640e2b92889df6d276f\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\84800341ecbd0640e2b92889df6d276f\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c717397bf8af61b31ad66f3c466bf615\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\c717397bf8af61b31ad66f3c466bf615\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7880ada7fc88ea81f76827e5a5457791\transformed\emoji2-1.4.0\AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7880ada7fc88ea81f76827e5a5457791\transformed\emoji2-1.4.0\AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7880ada7fc88ea81f76827e5a5457791\transformed\emoji2-1.4.0\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7880ada7fc88ea81f76827e5a5457791\transformed\emoji2-1.4.0\AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7880ada7fc88ea81f76827e5a5457791\transformed\emoji2-1.4.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7880ada7fc88ea81f76827e5a5457791\transformed\emoji2-1.4.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\7880ada7fc88ea81f76827e5a5457791\transformed\emoji2-1.4.0\AndroidManifest.xml:30:17-75
+intent#action:name:com.spotify.sso.action.START_AUTH_FLOW+data:mimeType:text/plain
+ADDED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:37:9-41:18
+action#com.spotify.sso.action.START_AUTH_FLOW
+ADDED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:38:13-77
+	android:name
+		ADDED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:38:21-74
+intent#action:name:android.support.customtabs.action.CustomTabsService
+ADDED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:42:9-44:18
+action#android.support.customtabs.action.CustomTabsService
+ADDED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:43:13-90
+	android:name
+		ADDED from [com.spotify.android:auth:2.1.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\83eb9b64d87af1698c3f05d3c77c3e07\transformed\auth-2.1.0\AndroidManifest.xml:43:21-87
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.5.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6aee81e36d6da51cdaf3c271005139d8\transformed\window-1.5.0\AndroidManifest.xml:23:9-25:40
+	android:required
+		ADDED from [androidx.window:window:1.5.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6aee81e36d6da51cdaf3c271005139d8\transformed\window-1.5.0\AndroidManifest.xml:25:13-37
+	android:name
+		ADDED from [androidx.window:window:1.5.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6aee81e36d6da51cdaf3c271005139d8\transformed\window-1.5.0\AndroidManifest.xml:24:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.5.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6aee81e36d6da51cdaf3c271005139d8\transformed\window-1.5.0\AndroidManifest.xml:26:9-28:40
+	android:required
+		ADDED from [androidx.window:window:1.5.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6aee81e36d6da51cdaf3c271005139d8\transformed\window-1.5.0\AndroidManifest.xml:28:13-37
+	android:name
+		ADDED from [androidx.window:window:1.5.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\6aee81e36d6da51cdaf3c271005139d8\transformed\window-1.5.0\AndroidManifest.xml:27:13-51
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:23:9-81
+permission#com.example.runningbeat.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:26:22-94
+uses-permission#com.example.runningbeat.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.16.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\827ce959c255cbde74feff8972685521\transformed\core-1.16.0\AndroidManifest.xml:26:22-94
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\84800341ecbd0640e2b92889df6d276f\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\84800341ecbd0640e2b92889df6d276f\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\84800341ecbd0640e2b92889df6d276f\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:30:17-78
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Julian Pins\.gradle\caches\9.5.0\transforms\ad0ff07aab61130f23850268065e3adc\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92

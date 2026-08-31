@@ -52,7 +52,6 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "temp_runningbeat.db"
                 )
-                    // Pre-populates clean fallback tracks from assets every session
                     .createFromAsset("database/fallback_tracks.db")
                     .build()
 

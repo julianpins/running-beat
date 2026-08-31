@@ -1,0 +1,5 @@
+com.example.runningbeat.test.app-updated_navigation_xml-0 C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\build\generated\updated_navigation_xml\debugAndroidTest
+com.example.runningbeat.test.app-packageDebugAndroidTestResources-1 C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\build\intermediates\incremental\debugAndroidTest\packageDebugAndroidTestResources\merged.dir
+com.example.runningbeat.test.app-packageDebugAndroidTestResources-2 C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\build\intermediates\incremental\debugAndroidTest\packageDebugAndroidTestResources\stripped.dir
+com.example.runningbeat.test.app-debugAndroidTest-3 C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
+gradleHome-0 C:\Users\Julian Pins\.gradle

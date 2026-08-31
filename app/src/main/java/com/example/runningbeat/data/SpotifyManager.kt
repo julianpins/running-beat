@@ -30,6 +30,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path
 import retrofit2.http.Query
+import kotlin.time.Duration.Companion.milliseconds
 
 data class SpotifyPlaylistsResponse(
     @SerializedName("items") val items: List<SpotifyPlaylistObject>?
@@ -136,7 +137,7 @@ class SpotifyManager(
             while (true) {
                 checkTrackProgress()
                 notifyPlaybackStateListeners()
-                delay(TICK_MS)
+                delay(TICK_MS.milliseconds)
             }
         }
     }
@@ -183,7 +184,8 @@ class SpotifyManager(
 
         if (newUri != null && newUri != oldUri) {
             managerScope.launch(Dispatchers.IO) {
-                currentlyPlayingBpm.value = trackDao?.getTrackByUri(newUri)?.bpm
+                val track = trackDao?.getTrackByUri(newUri.toString())
+                currentlyPlayingBpm.value = track?.bpm
             }
         }
     }

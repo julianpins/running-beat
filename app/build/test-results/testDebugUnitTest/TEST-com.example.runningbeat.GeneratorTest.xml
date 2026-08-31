@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.runningbeat.GeneratorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-08-28T11:31:03.367Z" hostname="DESKTOP-HHAFRI9" time="3.049">
+  <properties/>
+  <testcase name="generateFallbackDatabase" classname="com.example.runningbeat.GeneratorTest" time="3.04"/>
+  <system-out><![CDATA[Deleted old fallback_tracks.db
+]]>&#x1f6e0;<![CDATA[️ Connecting to SQLite database...
+]]>&#x1f50d;<![CDATA[ Fetching user playlists from Spotify API...
+]]>&#x1f4c1;<![CDATA[ Found 'Fallback' playlist (ID: 0TgvcPLAuNOoysJbplaDBr). Fetching track list...
+]]>&#x1f3b6;<![CDATA[ Total tracks retrieved from Spotify: 202
+✅ SUCCESS!
+]]>&#x1f389;<![CDATA[ Database created with 202 fallback tracks across 100..200 BPM.
+]]>&#x1f4cd;<![CDATA[ File Location: C:\Users\Julian Pins\AndroidStudioProjects\RunningBeat\app\fallback_tracks.db
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
