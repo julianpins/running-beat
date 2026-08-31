@@ -104,8 +104,8 @@ class MainActivity : ComponentActivity() {
     private var errorMessageState = mutableStateOf<String?>(null)
     private var isPlayingState = mutableStateOf(false)
     private var isConnectedState = mutableStateOf(false)
-    private var isFirstPlayState = mutableStateOf(true)
     private var isSyncingState = mutableStateOf(false)
+    private var isRunningState = mutableStateOf(false)
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private val permissionLauncher = registerForActivityResult(
@@ -139,13 +139,28 @@ class MainActivity : ComponentActivity() {
             val bpm by StepTrackerService.currentBpm.collectAsState()
             val errorMessage by errorMessageState
             val isConnected by isConnectedState
+            val isRunning by isRunningState
             val isPlaying by isPlayingState
-            val isFirstPlay by isFirstPlayState
             val isSyncing by isSyncingState
 
             val coroutineScope = rememberCoroutineScope()
 
             var showSettingsDialog by remember { mutableStateOf(false) }
+            var showHelpScreen by remember { mutableStateOf(false) }
+            var showStatsScreen by remember { mutableStateOf(false) }
+            val runBpmHistory = remember { mutableStateListOf<Pair<Long, Double>>() }
+            var runStartTime by remember { mutableLongStateOf(0L) }
+
+            // Record BPM every time it changes during a run
+            LaunchedEffect(isRunning) {
+                if (isRunning) {
+                    StepTrackerService.bpmUpdates.collect { preciseBpm ->
+                        if (runStartTime == 0L) runStartTime = System.currentTimeMillis()
+                        val elapsedMillis = System.currentTimeMillis() - runStartTime
+                        runBpmHistory.add(elapsedMillis to preciseBpm)
+                    }
+                }
+            }
 
             val minBpm by settingsRepository.minBpmFlow.collectAsState(initial = 145)
             val maxBpm by settingsRepository.maxBpmFlow.collectAsState(initial = 165)
@@ -154,6 +169,7 @@ class MainActivity : ComponentActivity() {
             val bpmDiffSwitch by settingsRepository.bpmDiffSwitchFlow.collectAsState(initial = 4)
             val switchDelaySeconds by settingsRepository.switchDelaySecondsFlow.collectAsState(initial = 7)
             val useFallbackTracks by settingsRepository.useFallbackTracksFlow.collectAsState(initial = true)
+            val isCadenceOnly by settingsRepository.isCadenceOnlyModeFlow.collectAsState(initial = false)
 
             val syncMessage = if (isSyncing) "Loading your playlists..." else null
 
@@ -167,7 +183,9 @@ class MainActivity : ComponentActivity() {
                     CadenceScreen(
                         currentBpm = bpm,
                         isConnected = isConnected && !isSyncing,
+                        isRunning = isRunning,
                         isPlaying = isPlaying,
+                        isCadenceOnly = isCadenceOnly,
                         errorMessage = syncMessage ?: errorMessage,
                         onClearError = { errorMessageState.value = null },
                         onConnectSpotify = {
@@ -176,40 +194,74 @@ class MainActivity : ComponentActivity() {
                                 spotifyManager.authorize(this@MainActivity)
                             }
                         },
+                        onToggleMode = { onlyCadence ->
+                            coroutineScope.launch {
+                                settingsRepository.saveIsCadenceOnlyMode(onlyCadence)
+                                if (onlyCadence) {
+                                    spotifyManager.disconnect()
+                                    isConnectedState.value = false
+                                    isPlayingState.value = false
+                                }
+                            }
+                        },
+                        onStartRun = {
+                            isRunningState.value = true
+                            runBpmHistory.clear()
+                            runStartTime = 0L
+                            if (!isCadenceOnly) {
+                                coroutineScope.launch {
+                                    spotifyManager.playBestMatchingTrack(
+                                        currentBpm = StepTrackerService.currentBpm.value,
+                                        trackDao = trackDao,
+                                        useFallback = useFallbackTracks,
+                                        onError = { err ->
+                                            errorMessageState.value = "Playback Error: ${err.localizedMessage}"
+                                        }
+                                    )
+                                }
+                            }
+                        },
+                        onEndRun = {
+                            // Capture one final data point at the exact moment the run ends
+                            if (runStartTime > 0) {
+                                val finalElapsed = System.currentTimeMillis() - runStartTime
+                                runBpmHistory.add(finalElapsed to StepTrackerService.preciseBpm.value)
+                            }
+                            isRunningState.value = false
+                            if (!isCadenceOnly) {
+                                coroutineScope.launch {
+                                    try {
+                                        val currentVol = spotifyManager.getCurrentVolume()
+                                        spotifyManager.fadeVolume(from = currentVol, to = 0.0f, durationMs = 1500L)
+                                        spotifyManager.pausePlayback()
+                                        // Reset volume for next time (app remote might keep it at 0 otherwise)
+                                        spotifyManager.fadeVolume(from = 0.0f, to = currentVol, durationMs = 0L)
+                                    } catch (e: Exception) {
+                                        spotifyManager.pausePlayback()
+                                    }
+                                }
+                            }
+                        },
                         onPlayPause = {
-                            if (isSyncing) return@CadenceScreen
+                            if (isSyncing || isCadenceOnly) return@CadenceScreen
 
                             if (isPlaying) {
                                 spotifyManager.pausePlayback { err ->
                                     errorMessageState.value = err.localizedMessage
                                 }
                             } else {
-                                if (isFirstPlay) {
-                                    isFirstPlayState.value = false
-                                    coroutineScope.launch {
-                                        spotifyManager.playBestMatchingTrack(
-                                            currentBpm = StepTrackerService.currentBpm.value,
-                                            trackDao = trackDao,
-                                            useFallback = useFallbackTracks,
-                                            onError = { err ->
-                                                errorMessageState.value = "Playback Error: ${err.localizedMessage}"
-                                            }
-                                        )
-                                    }
-                                } else {
-                                    spotifyManager.resumePlayback { err ->
-                                        errorMessageState.value = "Playback Error: ${err.localizedMessage}"
-                                    }
+                                spotifyManager.resumePlayback { err ->
+                                    errorMessageState.value = "Playback Error: ${err.localizedMessage}"
                                 }
                             }
                         },
                         onRestart = {
-                            if (!isSyncing) {
+                            if (!isSyncing && !isCadenceOnly) {
                                 spotifyManager.restartTrack { err -> errorMessageState.value = err.localizedMessage }
                             }
                         },
                         onSkip = {
-                            if (!isSyncing) {
+                            if (!isSyncing && !isCadenceOnly) {
                                 coroutineScope.launch {
                                     spotifyManager.playBestMatchingTrack(
                                         currentBpm = StepTrackerService.currentBpm.value,
@@ -219,7 +271,16 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                         },
-                        onOpenSettings = { showSettingsDialog = true }
+                        onOpenSettings = {
+                            if (isRunning) {
+                                errorMessageState.value = "Settings cannot be changed during a run."
+                            } else {
+                                showSettingsDialog = true
+                            }
+                        },
+                        onOpenHelp = { showHelpScreen = true },
+                        onViewStats = { showStatsScreen = true },
+                        hasStats = runBpmHistory.isNotEmpty()
                     )
 
                     if (showSettingsDialog) {
@@ -260,10 +321,21 @@ class MainActivity : ComponentActivity() {
                             onDismiss = { showSettingsDialog = false }
                         )
                     }
+
+                    if (showHelpScreen) {
+                        HelpScreen(onDismiss = { showHelpScreen = false })
+                    }
+
+                    if (showStatsScreen) {
+                        StatsScreen(
+                            bpmHistory = runBpmHistory.toList(),
+                            onDismiss = { showStatsScreen = false }
+                        )
+                    }
                     AutoSkipController(
                         currentBpm = bpm,
                         playingBpm = playingBpm,
-                        allowSkipping = allowSkipping,
+                        allowSkipping = allowSkipping && isRunning && !isCadenceOnly,
                         useFallback = useFallbackTracks,
                         bpmDiffSwitch = bpmDiffSwitch,
                         switchDelaySeconds = switchDelaySeconds,
@@ -284,7 +356,6 @@ class MainActivity : ComponentActivity() {
                 resultCode = resultCode,
                 intent = data,
                 onConnected = {
-                    isFirstPlayState.value = true
                     spotifyManager.pausePlayback()
 
                     spotifyManager.subscribeToPlayerState { isPlaying ->

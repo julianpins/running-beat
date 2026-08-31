@@ -32,16 +32,16 @@ class CadenceCalculator(
         smoothedBpm = startingBpm.toDouble()
     }
 
-    fun processStep(timestamp: Long): Int {
+    fun processStep(timestamp: Long): Double {
         if (stepTimestamps.isNotEmpty()) {
             val interval = timestamp - stepTimestamps.peekLast()!!
             if (interval < falseStepInterval) {
-                return smoothedBpm.toInt()
+                return smoothedBpm
             }
             if (interval > breakInterval) {
                 stepTimestamps.clear()
                 stepTimestamps.addLast(timestamp)
-                return smoothedBpm.toInt()
+                return smoothedBpm
             }
             if (interval > missBeatInterval) {
                 stepTimestamps.addLast(stepTimestamps.peekLast()!! + interval / 2)
@@ -54,7 +54,7 @@ class CadenceCalculator(
             stepTimestamps.removeFirst()
         }
 
-        if (stepTimestamps.size < 5) return smoothedBpm.toInt()
+        if (stepTimestamps.size < 5) return smoothedBpm
         val currentWindowDuration = stepTimestamps.peekLast()!! - stepTimestamps.peekFirst()!!
 
         // 4. Minimum Window Guard: Only calculate a new raw BPM if we have accumulated at least 6s of data
@@ -70,6 +70,6 @@ class CadenceCalculator(
         if(smoothedBpm > 200) {
             smoothedBpm = 200.0
         }
-        return smoothedBpm.toInt()
+        return smoothedBpm
     }
 }

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.runningbeat.test.app-mergeDebugAndroidTestResources-33:/values-v28/values-v28.xml",
+            "outputFile": "com.example.runningbeat.test.app-mergeDebugAndroidTestResources-34:/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\7a97c6b234cf121cbd626a6fb349e397\\transformed\\core-1.5.0\\res\\values-v28\\values.xml",
+                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\648e112be1b690307764c1c83ae5c89b\\transformed\\core-1.5.0\\res\\values-v28\\values.xml",
                     "from": {
                         "startLines": "4,13",
                         "startColumns": "0,0",

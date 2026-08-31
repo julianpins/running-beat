@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.runningbeat.test.app-mergeDebugAndroidTestResources-33:/values-fr/values-fr.xml",
+            "outputFile": "com.example.runningbeat.test.app-mergeDebugAndroidTestResources-34:/values-fr/values-fr.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\d553f891059ad5a88b686f6d0ec54128\\transformed\\core-1.16.0\\res\\values-fr\\values-fr.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,153,255,354,456,560,664,782",
-                        "endColumns": "97,101,98,101,103,103,117,100",
-                        "endOffsets": "148,250,349,451,555,659,777,878"
-                    },
-                    "to": {
-                        "startLines": "3,4,5,6,7,8,9,26",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "211,309,411,510,612,716,820,2316",
-                        "endColumns": "97,101,98,101,103,103,117,100",
-                        "endOffsets": "304,406,505,607,711,815,933,2412"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\40b6df20a0f14fb4e5e9410a15296226\\transformed\\ui\\res\\values-fr\\values-fr.xml",
+                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\44d609e259d0b3a732dfe6a88d1255a8\\transformed\\ui\\res\\values-fr\\values-fr.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -35,6 +18,23 @@
                         "startOffsets": "105,938,1037,1125,1225,1325,1412,1491,1583,1675,1762,1843,1928,2004,2089,2164,2242,2417,2495,2564",
                         "endColumns": "105,98,87,99,99,86,78,91,91,86,80,84,75,84,74,77,73,77,68,121",
                         "endOffsets": "206,1032,1120,1220,1320,1407,1486,1578,1670,1757,1838,1923,1999,2084,2159,2237,2311,2490,2559,2681"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\827ce959c255cbde74feff8972685521\\transformed\\core-1.16.0\\res\\values-fr\\values-fr.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,153,255,354,456,560,664,782",
+                        "endColumns": "97,101,98,101,103,103,117,100",
+                        "endOffsets": "148,250,349,451,555,659,777,878"
+                    },
+                    "to": {
+                        "startLines": "3,4,5,6,7,8,9,26",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "211,309,411,510,612,716,820,2316",
+                        "endColumns": "97,101,98,101,103,103,117,100",
+                        "endOffsets": "304,406,505,607,711,815,933,2412"
                     }
                 }
             ]

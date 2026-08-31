@@ -16,6 +16,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
@@ -55,7 +56,9 @@ class StepTrackerService : Service() {
         serviceScope.launch {
             sensorManager.stepEvents.collect { timestamp ->
                 val bpm = cadenceCalculator.processStep(timestamp)
-                _currentBpm.value = bpm
+                _currentBpm.value = bpm.toInt()
+                _preciseBpm.value = bpm
+                _bpmUpdates.emit(bpm)
             }
         }
     }
@@ -64,6 +67,7 @@ class StepTrackerService : Service() {
         sensorManager.stopListening()
         serviceScope.cancel()
         _currentBpm.value = 0
+        _preciseBpm.value = 0.0
         super.onDestroy()
     }
 
@@ -88,8 +92,15 @@ class StepTrackerService : Service() {
         private val _currentBpm = MutableStateFlow(155)
         val currentBpm: StateFlow<Int> = _currentBpm.asStateFlow()
 
+        private val _preciseBpm = MutableStateFlow(155.0)
+        val preciseBpm: StateFlow<Double> = _preciseBpm.asStateFlow()
+
+        private val _bpmUpdates = kotlinx.coroutines.flow.MutableSharedFlow<Double>()
+        val bpmUpdates = _bpmUpdates.asSharedFlow()
+
         fun resetBpmToStarting(startingBpm: Int) {
             _currentBpm.value = startingBpm
+            _preciseBpm.value = startingBpm.toDouble()
         }
     }
 }

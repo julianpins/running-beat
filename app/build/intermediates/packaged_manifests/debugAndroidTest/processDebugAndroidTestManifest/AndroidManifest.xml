@@ -3,8 +3,8 @@
     package="com.example.runningbeat.test" >
 
     <uses-sdk
-        android:minSdkVersion="24"
-        android:targetSdkVersion="37" />
+        android:minSdkVersion="26"
+        android:targetSdkVersion="35" />
 
     <instrumentation
         android:name="androidx.test.runner.AndroidJUnitRunner"
@@ -24,6 +24,8 @@
     <application
         android:debuggable="true"
         android:extractNativeLibs="false" >
+        <uses-library android:name="android.test.runner" />
+
         <activity
             android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
             android:exported="true"

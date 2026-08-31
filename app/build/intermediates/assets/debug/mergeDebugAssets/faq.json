@@ -1,0 +1,26 @@
+[
+  {
+    "question": "How do I use my own playlists?",
+    "answer": "Name your Spotify playlists with the target BPM (e.g., 'Run 160'). The app only detects playlists you have created or saved to your profile. To use someone else's playlist, copy its songs into a new playlist (Add to other playlist -> New playlist) that you name with the correct BPM."
+  },
+  {
+    "question": "Which BPMs should I create playlists for?",
+    "answer": "Most runners fall between 145 and 180 BPM. You can use the 'Cadence Analysis' mode first, then check 'View Stats' to find your range. We recommend creating a playlist for every 5 BPM (e.g., 155, 160, 165) for smooth transitions."
+  },
+  {
+    "question": "How do I find songs with specific BPMs?",
+    "answer": "Use Spotify's 'mix' feature and sort your own running playlist into playlists for each target bpm. Alternatively search Spotify for a specific tempo (e.g., '160 BPM') to find an auto-generated mix for you, then save it to your account (Add to other playlist -> New playlist). Avoid songs with slow intros or tempo changes, and try to keep tracks within 2 BPM of the playlist's target."
+  },
+  {
+    "question": "Does RunningBeat work offline?",
+    "answer": "Yes, as long as you have downloaded your playlists in the official Spotify app. You only need an internet connection for the initial connection to Spotify and playlist sync. For using the default tracks offline, find and download the playlist 'Fallback RunningBeat' by Pyns on Spotify."
+  },
+  {
+    "question": "Why does the song skip too often?",
+    "answer": "The app may be too sensitive. In Settings, try increasing 'BPM Difference' or 'Time before Switch'. Also, ensure your tracks closely match the BPM listed in the playlist name and don't have slow intros or noticeable tempo changes."
+  },
+  {
+    "question": "What if the Spotify connection fails?",
+    "answer": "Ensure the Spotify app is installed and you are logged in. If the problem persists, try restarting the RunningBeat app."
+  }
+]

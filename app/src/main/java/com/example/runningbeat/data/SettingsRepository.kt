@@ -30,6 +30,9 @@ class SettingsRepository(context: Context) {
     private val _useFallbackTracksFlow = MutableStateFlow(prefs.getBoolean("use_fallback_tracks", true))
     val useFallbackTracksFlow: StateFlow<Boolean> = _useFallbackTracksFlow.asStateFlow()
 
+    private val _isCadenceOnlyModeFlow = MutableStateFlow(prefs.getBoolean("is_cadence_only", false))
+    val isCadenceOnlyModeFlow: StateFlow<Boolean> = _isCadenceOnlyModeFlow.asStateFlow()
+
     fun saveBpmWindow(min: Int, max: Int) {
         prefs.edit().putInt("min_bpm", min).putInt("max_bpm", max).apply()
         _minBpmFlow.value = min
@@ -59,5 +62,10 @@ class SettingsRepository(context: Context) {
     fun saveUseFallbackTracks(value: Boolean) {
         prefs.edit().putBoolean("use_fallback_tracks", value).apply()
         _useFallbackTracksFlow.value = value
+    }
+
+    fun saveIsCadenceOnlyMode(value: Boolean) {
+        prefs.edit().putBoolean("is_cadence_only", value).apply()
+        _isCadenceOnlyModeFlow.value = value
     }
 }

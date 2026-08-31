@@ -135,8 +135,10 @@ class SpotifyManager(
 
         managerScope.launch {
             while (true) {
-                checkTrackProgress()
-                notifyPlaybackStateListeners()
+                if (spotifyAppRemote != null) {
+                    checkTrackProgress()
+                    notifyPlaybackStateListeners()
+                }
                 delay(TICK_MS.milliseconds)
             }
         }
@@ -393,5 +395,8 @@ class SpotifyManager(
         playerStateSubscription?.cancel()
         spotifyAppRemote?.let { SpotifyAppRemote.disconnect(it) }
         spotifyAppRemote = null
+        lastStateSnapshot = null
+        lastQueuedTrackUri = null
+        currentlyPlayingBpm.value = null
     }
 }
