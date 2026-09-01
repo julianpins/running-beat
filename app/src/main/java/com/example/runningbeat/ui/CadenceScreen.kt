@@ -1,5 +1,6 @@
 package com.example.runningbeat.ui
 
+import androidx.compose.animation.*
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -27,7 +28,7 @@ fun CadenceScreen(
     isConnected: Boolean,
     isRunning: Boolean,
     isPlaying: Boolean,
-    errorMessage: String?,
+    appMessage: AppMessage?,
     playingBpm: Int? = null,
     playingTitle: String? = null,
     onClearError: () -> Unit,
@@ -64,6 +65,39 @@ fun CadenceScreen(
                     contentDescription = "Settings",
                     tint = if (isRunning) MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f) else LocalContentColor.current
                 )
+            }
+        }
+
+        // Top-Left Notification
+        AnimatedVisibility(
+            visible = appMessage != null,
+            enter = slideInVertically(initialOffsetY = { -it }) + fadeIn(),
+            exit = slideOutVertically(targetOffsetY = { -it }) + fadeOut(),
+            modifier = Modifier.align(Alignment.TopStart)
+        ) {
+            appMessage?.let { message ->
+                Card(
+                    modifier = Modifier
+                        .padding(top = 48.dp, start = 16.dp, end = 16.dp, bottom = 16.dp)
+                        .widthIn(max = 300.dp)
+                        .clickable { onClearError() },
+                    colors = CardDefaults.cardColors(
+                        containerColor = if (message.isError) MaterialTheme.colorScheme.error else Color.White
+                    ),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = message.text,
+                            color = if (message.isError) MaterialTheme.colorScheme.onError else Color.Black,
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
+                }
             }
         }
 
@@ -165,36 +199,6 @@ fun CadenceScreen(
             }) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Spacer(modifier = Modifier.height(24.dp))
-
-                    errorMessage?.let { message ->
-                        Card(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp),
-                            colors = CardDefaults.cardColors(
-                                containerColor = MaterialTheme.colorScheme.errorContainer
-                            )
-                        ) {
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(16.dp),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Text(
-                                    text = message,
-                                    color = MaterialTheme.colorScheme.onErrorContainer,
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    modifier = Modifier.weight(1f)
-                                )
-                                TextButton(onClick = onClearError) {
-                                    Text("Dismiss", color = MaterialTheme.colorScheme.onErrorContainer)
-                                }
-                            }
-                        }
-                        Spacer(modifier = Modifier.height(16.dp))
-                    }
 
                     if (!isConnected && !isCadenceOnly) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {

@@ -95,13 +95,15 @@ fun AutoSkipController(
     }
 }
 
+data class AppMessage(val text: String, val isError: Boolean)
+
 class MainActivity : ComponentActivity() {
 
     private lateinit var spotifyManager: SpotifyManager
     private lateinit var settingsRepository: SettingsRepository
     private lateinit var trackDao: TrackDao
 
-    private var errorMessageState = mutableStateOf<String?>(null)
+    private var appMessageState = mutableStateOf<AppMessage?>(null)
     private var isPlayingState = mutableStateOf(false)
     private var isConnectedState = mutableStateOf(false)
     private var isSyncingState = mutableStateOf(false)
@@ -137,7 +139,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val bpm by StepTrackerService.currentBpm.collectAsState()
-            val errorMessage by errorMessageState
+            val appMessage by appMessageState
             val isConnected by isConnectedState
             val isRunning by isRunningState
             val isPlaying by isPlayingState
@@ -175,7 +177,10 @@ class MainActivity : ComponentActivity() {
             val useFallbackTracks by settingsRepository.useFallbackTracksFlow.collectAsState(initial = true)
             val isCadenceOnly by settingsRepository.isCadenceOnlyModeFlow.collectAsState(initial = false)
 
-            val syncMessage = if (isSyncing) "Loading your playlists..." else null
+            val displayMessage = remember(appMessage, isSyncing) {
+                if (isSyncing) AppMessage("Loading your playlists...", false)
+                else appMessage
+            }
 
             val playingBpm by spotifyManager.currentlyPlayingBpm.collectAsState()
             val playingTitle by spotifyManager.currentlyPlayingTitle.collectAsState()
@@ -191,13 +196,13 @@ class MainActivity : ComponentActivity() {
                         isRunning = isRunning,
                         isPlaying = isPlaying,
                         isCadenceOnly = isCadenceOnly,
-                        errorMessage = syncMessage ?: errorMessage,
+                        appMessage = displayMessage,
                         playingBpm = playingBpm,
                         playingTitle = playingTitle,
-                        onClearError = { errorMessageState.value = null },
+                        onClearError = { appMessageState.value = null },
                         onConnectSpotify = {
                             if (!isSyncing) {
-                                errorMessageState.value = null
+                                appMessageState.value = null
                                 spotifyManager.authorize(this@MainActivity)
                             }
                         },
@@ -228,7 +233,7 @@ class MainActivity : ComponentActivity() {
                                         trackDao = trackDao,
                                         useFallback = useFallbackTracks,
                                         onError = { err ->
-                                            errorMessageState.value = "Playback Error: ${err.localizedMessage}"
+                                            appMessageState.value = AppMessage("Playback Error: ${err.localizedMessage}", true)
                                         }
                                     )
                                 }
@@ -241,7 +246,7 @@ class MainActivity : ComponentActivity() {
                                 runBpmHistory.add(finalElapsed to StepTrackerService.preciseBpm.value)
                             }
                             if (runBpmHistory.isEmpty()) {
-                                errorMessageState.value = "No steps detected during last run."
+                                appMessageState.value = AppMessage("No steps detected during last run.", false)
                             }
                             isRunningState.value = false
                             if (!isCadenceOnly) {
@@ -263,17 +268,17 @@ class MainActivity : ComponentActivity() {
 
                             if (isPlaying) {
                                 spotifyManager.pausePlayback { err ->
-                                    errorMessageState.value = err.localizedMessage
+                                    appMessageState.value = AppMessage(err.localizedMessage ?: "Unknown Error", true)
                                 }
                             } else {
                                 spotifyManager.resumePlayback { err ->
-                                    errorMessageState.value = "Playback Error: ${err.localizedMessage}"
+                                    appMessageState.value = AppMessage("Playback Error: ${err.localizedMessage}", true)
                                 }
                             }
                         },
                         onRestart = {
                             if (!isSyncing && !isCadenceOnly) {
-                                spotifyManager.restartTrack { err -> errorMessageState.value = err.localizedMessage }
+                                spotifyManager.restartTrack { err -> appMessageState.value = AppMessage(err.localizedMessage ?: "Unknown Error", true) }
                             }
                         },
                         onSkip = {
@@ -289,7 +294,7 @@ class MainActivity : ComponentActivity() {
                         },
                         onOpenSettings = {
                             if (isRunning) {
-                                errorMessageState.value = "Settings cannot be changed during a run."
+                                appMessageState.value = AppMessage("Settings cannot be changed during a run.", false)
                             } else {
                                 showSettingsDialog = true
                             }
@@ -403,12 +408,12 @@ class MainActivity : ComponentActivity() {
                                 maxBpm = maxBpm,
                                 useFallback = useFallback,
                                 onWarning = { warningText ->
-                                    errorMessageState.value = warningText
+                                    appMessageState.value = AppMessage(warningText, false)
                                 })
 
                             logAllDatabaseTracks(trackDao)
                         } catch (e: Exception) {
-                            errorMessageState.value = "Failed to load playlists: ${e.localizedMessage}"
+                            appMessageState.value = AppMessage("Failed to load playlists: ${e.localizedMessage}", true)
                         } finally {
                             isSyncingState.value = false
                         }
@@ -416,7 +421,7 @@ class MainActivity : ComponentActivity() {
                     isConnectedState.value = true
                 },
                 onFailure = { errorMsg ->
-                    errorMessageState.value = errorMsg
+                    appMessageState.value = AppMessage(errorMsg, true)
                 }
             )
         }

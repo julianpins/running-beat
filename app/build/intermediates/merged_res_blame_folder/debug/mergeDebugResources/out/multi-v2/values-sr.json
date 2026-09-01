@@ -4,7 +4,7 @@
             "outputFile": "com.example.runningbeat.app-mergeDebugResources-46:/values-sr/values-sr.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\6908db823e18467f63084846cfcefd72\\transformed\\material\\res\\values-sr\\values-sr.xml",
+                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\310c523934fdec018c307fbeec29a641\\transformed\\material\\res\\values-sr\\values-sr.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\74ec2463b8f3316da193408d1610e387\\transformed\\foundation\\res\\values-sr\\values-sr.xml",
+                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\69155ad3f0d1667374e23ea688e76ae8\\transformed\\foundation\\res\\values-sr\\values-sr.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\827ce959c255cbde74feff8972685521\\transformed\\core-1.16.0\\res\\values-sr\\values-sr.xml",
+                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\a5ba48c7327788e7762b4f5e51f7a0e4\\transformed\\core-1.16.0\\res\\values-sr\\values-sr.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\d6e41e58017121a7d00fdbdb171cb67f\\transformed\\material3\\res\\values-sr\\values-sr.xml",
+                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\6e998888b34a729dbd2964d9e3ab0410\\transformed\\material3\\res\\values-sr\\values-sr.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -72,24 +72,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\44d609e259d0b3a732dfe6a88d1255a8\\transformed\\ui\\res\\values-sr\\values-sr.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,210,307,394,491,592,678,755,846,938,1023,1103,1188,1261,1350,1427,1505,1581,1660,1730",
-                        "endColumns": "104,96,86,96,100,85,76,90,91,84,79,84,72,88,76,77,75,78,69,117",
-                        "endOffsets": "205,302,389,486,587,673,750,841,933,1018,1098,1183,1256,1345,1422,1500,1576,1655,1725,1843"
-                    },
-                    "to": {
-                        "startLines": "3,11,12,14,15,16,20,21,89,90,91,92,93,94,95,96,97,99,100,101",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "218,1049,1146,1344,1441,1542,1939,2016,9479,9571,9656,9736,9821,9894,9983,10060,10138,10315,10394,10464",
-                        "endColumns": "104,96,86,96,100,85,76,90,91,84,79,84,72,88,76,77,75,78,69,117",
-                        "endOffsets": "318,1141,1228,1436,1537,1623,2011,2102,9566,9651,9731,9816,9889,9978,10055,10133,10209,10389,10459,10577"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\e9cc24efd3f57818f4e4cf8f5b57292a\\transformed\\browser-1.4.0\\res\\values-sr\\values-sr.xml",
+                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\f8f673c1e0a0356a72f82f6cd4cdf8ca\\transformed\\browser-1.4.0\\res\\values-sr\\values-sr.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -103,6 +86,23 @@
                         "startOffsets": "1233,1628,1728,1841",
                         "endColumns": "110,99,112,97",
                         "endOffsets": "1339,1723,1836,1934"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Julian Pins\\.gradle\\caches\\9.5.0\\transforms\\cf151d59d86aaa45d15710a98ef8a390\\transformed\\ui\\res\\values-sr\\values-sr.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,210,307,394,491,592,678,755,846,938,1023,1103,1188,1261,1350,1427,1505,1581,1660,1730",
+                        "endColumns": "104,96,86,96,100,85,76,90,91,84,79,84,72,88,76,77,75,78,69,117",
+                        "endOffsets": "205,302,389,486,587,673,750,841,933,1018,1098,1183,1256,1345,1422,1500,1576,1655,1725,1843"
+                    },
+                    "to": {
+                        "startLines": "3,11,12,14,15,16,20,21,89,90,91,92,93,94,95,96,97,99,100,101",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "218,1049,1146,1344,1441,1542,1939,2016,9479,9571,9656,9736,9821,9894,9983,10060,10138,10315,10394,10464",
+                        "endColumns": "104,96,86,96,100,85,76,90,91,84,79,84,72,88,76,77,75,78,69,117",
+                        "endOffsets": "318,1141,1228,1436,1537,1623,2011,2102,9566,9651,9731,9816,9889,9978,10055,10133,10209,10389,10459,10577"
                     }
                 }
             ]

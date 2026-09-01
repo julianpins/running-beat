@@ -50,6 +50,12 @@ class StepTrackerService : Service() {
             }.distinctUntilChanged().collect { bpmToUse ->
                 // This updates the local storage in calculator
                 cadenceCalculator.updateStartingBpm(bpmToUse)
+                
+                // If we haven't recorded any steps yet, reflect the initialization value
+                if (_currentBpm.value == 0 || _currentBpm.value != bpmToUse) {
+                    _currentBpm.value = bpmToUse
+                    _preciseBpm.value = bpmToUse.toDouble()
+                }
             }
         }
 
