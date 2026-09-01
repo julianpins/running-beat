@@ -115,6 +115,7 @@ class SpotifyManager(
     private var isQueueing = false
 
     val currentlyPlayingBpm = MutableStateFlow<Int?>(null)
+    val currentlyPlayingTitle = MutableStateFlow<String?>(null)
     val currentVolumeFlow = MutableStateFlow(1.0f)
 
     // Listeners driven by the single ticker loop below, instead of each spinning up its own loop.
@@ -185,6 +186,7 @@ class SpotifyManager(
         lastStateTime = System.currentTimeMillis()
 
         if (newUri != null && newUri != oldUri) {
+            currentlyPlayingTitle.value = state.track?.name
             managerScope.launch(Dispatchers.IO) {
                 val track = trackDao?.getTrackByUri(newUri.toString())
                 currentlyPlayingBpm.value = track?.bpm
@@ -398,5 +400,6 @@ class SpotifyManager(
         lastStateSnapshot = null
         lastQueuedTrackUri = null
         currentlyPlayingBpm.value = null
+        currentlyPlayingTitle.value = null
     }
 }

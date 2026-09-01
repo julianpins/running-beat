@@ -15,7 +15,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -26,6 +28,8 @@ fun CadenceScreen(
     isRunning: Boolean,
     isPlaying: Boolean,
     errorMessage: String?,
+    playingBpm: Int? = null,
+    playingTitle: String? = null,
     onClearError: () -> Unit,
     onConnectSpotify: () -> Unit,
     onStartRun: () -> Unit,
@@ -66,10 +70,10 @@ fun CadenceScreen(
         // Main Content
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(24.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+                .align(Alignment.Center)
+                .offset(y = (-60).dp)
+                .padding(horizontal = 24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
                 text = "RunningBeat",
@@ -152,100 +156,122 @@ fun CadenceScreen(
                 }
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
-
-            errorMessage?.let { message ->
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.errorContainer
-                    )
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = message,
-                            color = MaterialTheme.colorScheme.onErrorContainer,
-                            style = MaterialTheme.typography.bodyMedium,
-                            modifier = Modifier.weight(1f)
-                        )
-                        TextButton(onClick = onClearError) {
-                            Text("Dismiss", color = MaterialTheme.colorScheme.onErrorContainer)
-                        }
-                    }
+            // Dynamic Content starts here, but we use a custom layout to ignore its height for the parent's centering
+            Box(modifier = Modifier.layout { measurable, constraints ->
+                val placeable = measurable.measure(constraints)
+                layout(placeable.width, 0) {
+                    placeable.placeRelative(0, 0)
                 }
-                Spacer(modifier = Modifier.height(16.dp))
-            }
-
-            if (!isConnected && !isCadenceOnly) {
+            }) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Button(onClick = onConnectSpotify) {
-                        Text("Connect to Spotify")
-                    }
-                }
-            } else {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Button(
-                        onClick = { if (isRunning) onEndRun() else onStartRun() },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = if (isRunning) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary
-                        )
-                    ) {
-                        Text(if (isRunning) "End Run" else "Start Run")
-                    }
-
-                    if (!isRunning && hasStats) {
-                        OutlinedButton(onClick = onViewStats) {
-                            Text("View Stats")
-                        }
-                    }
-                }
-
-                if (isRunning && !isCadenceOnly) {
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(16.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        // Restart Button
-                        IconButton(onClick = onRestart) {
-                            Icon(
-                                imageVector = Icons.Default.FastRewind,
-                                contentDescription = "Restart Track",
-                                modifier = Modifier.size(36.dp)
+                    errorMessage?.let { message ->
+                        Card(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp),
+                            colors = CardDefaults.cardColors(
+                                containerColor = MaterialTheme.colorScheme.errorContainer
                             )
-                        }
-
-                        // Play / Pause Button
-                        FilledIconButton(
-                            onClick = onPlayPause,
-                            modifier = Modifier.size(56.dp)
                         ) {
-                            Icon(
-                                imageVector = if (isPlaying) Icons.Default.Pause else Icons.Default.PlayArrow,
-                                contentDescription = if (isPlaying) "Pause" else "Play",
-                                modifier = Modifier.size(32.dp)
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(16.dp),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = message,
+                                    color = MaterialTheme.colorScheme.onErrorContainer,
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    modifier = Modifier.weight(1f)
+                                )
+                                TextButton(onClick = onClearError) {
+                                    Text("Dismiss", color = MaterialTheme.colorScheme.onErrorContainer)
+                                }
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(16.dp))
+                    }
+
+                    if (!isConnected && !isCadenceOnly) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            Button(onClick = onConnectSpotify) {
+                                Text("Connect to Spotify")
+                            }
+                        }
+                    } else {
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Button(
+                                onClick = { if (isRunning) onEndRun() else onStartRun() },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = if (isRunning) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary
+                                )
+                            ) {
+                                Text(if (isRunning) "End Run" else "Start Run")
+                            }
+
+                            if (!isRunning && hasStats) {
+                                OutlinedButton(onClick = onViewStats) {
+                                    Text("View Stats")
+                                }
+                            }
+                        }
+
+                        if (isRunning && !isCadenceOnly && playingTitle != null) {
+                            Spacer(modifier = Modifier.height(16.dp))
+                            Text(
+                                text = "${playingBpm ?: "--"} - $playingTitle",
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = MaterialTheme.colorScheme.primary,
+                                fontWeight = FontWeight.SemiBold,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
                             )
                         }
 
-                        // Skip Next Button
-                        IconButton(onClick = onSkip) {
-                            Icon(
-                                imageVector = Icons.Default.SkipNext,
-                                contentDescription = "Skip Track",
-                                modifier = Modifier.size(36.dp)
-                            )
+                        if (isRunning && !isCadenceOnly) {
+                            Spacer(modifier = Modifier.height(16.dp))
+
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                // Restart Button
+                                IconButton(onClick = onRestart) {
+                                    Icon(
+                                        imageVector = Icons.Default.FastRewind,
+                                        contentDescription = "Restart Track",
+                                        modifier = Modifier.size(36.dp)
+                                    )
+                                }
+
+                                // Play / Pause Button
+                                FilledIconButton(
+                                    onClick = onPlayPause,
+                                    modifier = Modifier.size(56.dp)
+                                ) {
+                                    Icon(
+                                        imageVector = if (isPlaying) Icons.Default.Pause else Icons.Default.PlayArrow,
+                                        contentDescription = if (isPlaying) "Pause" else "Play",
+                                        modifier = Modifier.size(32.dp)
+                                    )
+                                }
+
+                                // Skip Next Button
+                                IconButton(onClick = onSkip) {
+                                    Icon(
+                                        imageVector = Icons.Default.SkipNext,
+                                        contentDescription = "Skip Track",
+                                        modifier = Modifier.size(36.dp)
+                                    )
+                                }
+                            }
                         }
                     }
                 }

@@ -178,6 +178,7 @@ class MainActivity : ComponentActivity() {
             val syncMessage = if (isSyncing) "Loading your playlists..." else null
 
             val playingBpm by spotifyManager.currentlyPlayingBpm.collectAsState()
+            val playingTitle by spotifyManager.currentlyPlayingTitle.collectAsState()
 
             MaterialTheme {
                 Surface(
@@ -191,6 +192,8 @@ class MainActivity : ComponentActivity() {
                         isPlaying = isPlaying,
                         isCadenceOnly = isCadenceOnly,
                         errorMessage = syncMessage ?: errorMessage,
+                        playingBpm = playingBpm,
+                        playingTitle = playingTitle,
                         onClearError = { errorMessageState.value = null },
                         onConnectSpotify = {
                             if (!isSyncing) {
