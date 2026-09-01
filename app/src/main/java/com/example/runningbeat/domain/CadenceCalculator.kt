@@ -3,7 +3,7 @@ package com.example.runningbeat.domain
 import java.util.ArrayDeque
 
 class CadenceCalculator(
-    private var startingBpm: Int = 155
+    private var startingBpm: Int
 ) {
     private val stepTimestamps = ArrayDeque<Long>()
     private var smoothedBpm: Double = startingBpm.toDouble()

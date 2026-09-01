@@ -189,12 +189,6 @@ fun CadenceScreen(
                     Button(onClick = onConnectSpotify) {
                         Text("Connect to Spotify")
                     }
-                    if (hasStats) {
-                        Spacer(modifier = Modifier.height(16.dp))
-                        OutlinedButton(onClick = onViewStats) {
-                            Text("View Stats")
-                        }
-                    }
                 }
             } else {
                 Row(

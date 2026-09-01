@@ -40,11 +40,16 @@ class StepTrackerService : Service() {
         startForeground(NOTIFICATION_ID, notification)
         sensorManager.startListening()
 
-        // 1. Monitor starting BPM from settings
+        // 1. Monitor starting BPM from settings, respecting the current mode
         serviceScope.launch {
-            settingsRepository.startingBpmFlow.collect { bpm ->
-                // This updates the local storage in calculator, but we use reset() for active run start
-                cadenceCalculator.updateStartingBpm(bpm)
+            combine(
+                settingsRepository.startingBpmFlow,
+                settingsRepository.isCadenceOnlyModeFlow
+            ) { bpm, isCadenceOnly ->
+                if (isCadenceOnly) 0 else bpm
+            }.distinctUntilChanged().collect { bpmToUse ->
+                // This updates the local storage in calculator
+                cadenceCalculator.updateStartingBpm(bpmToUse)
             }
         }
 

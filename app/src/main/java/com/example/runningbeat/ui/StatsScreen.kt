@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import kotlin.math.roundToInt
 
 @Composable
 fun StatsScreen(
@@ -138,11 +137,15 @@ fun BpmGraphEnhanced(
     
     // State for zoom and pan
     var scaleX by remember { mutableFloatStateOf(1f) }
+    var scaleY by remember { mutableFloatStateOf(1f) }
     var offsetX by remember { mutableFloatStateOf(0f) }
+    var offsetY by remember { mutableFloatStateOf(0f) }
     
     val state = rememberTransformableState { zoomChange, offsetChange, _ ->
         scaleX = (scaleX * zoomChange).coerceIn(1f, 20f)
+        scaleY = (scaleY * zoomChange).coerceIn(1f, 20f)
         offsetX += offsetChange.x
+        offsetY += offsetChange.y
     }
 
     // Min/Max for scaling
@@ -167,29 +170,45 @@ fun BpmGraphEnhanced(
             val chartWidth = width - paddingLeft - paddingRight
             val chartHeight = height - paddingTop - paddingBottom
 
-            // Constrain offsetX
-            val maxOffset = 0f
-            val minOffset = -(chartWidth * scaleX - chartWidth)
-            offsetX = offsetX.coerceIn(minOffset, maxOffset)
+            // Constrain offsets
+            val maxOffsetX = 0f
+            val minOffsetX = -(chartWidth * scaleX - chartWidth)
+            offsetX = offsetX.coerceIn(minOffsetX, maxOffsetX)
+
+            val minOffsetY = 0f
+            val maxOffsetY = (chartHeight * scaleY - chartHeight)
+            offsetY = offsetY.coerceIn(minOffsetY, maxOffsetY)
 
             // Draw Y-axis labels (BPM)
-            val yLabelCount = 5
+            val stepBpm = if (scaleY > 2.5f) 5 else 10
             val paint = android.graphics.Paint().apply {
                 color = labelColor
                 textSize = 30f
                 textAlign = android.graphics.Paint.Align.RIGHT
             }
             
-            for (i in 0..yLabelCount) {
-                val bpm = minBpm + (bpmRange / yLabelCount) * i
-                val y = (height - paddingBottom) - (i.toFloat() / yLabelCount) * chartHeight
-                drawContext.canvas.nativeCanvas.drawText(
-                    bpm.roundToInt().toString(),
-                    paddingLeft - 10f,
-                    y + 10f,
-                    paint
-                )
-                drawLine(Color.LightGray.copy(alpha = 0.3f), Offset(paddingLeft, y), Offset(width - paddingRight, y), 1f)
+            var labelBpm = (minBpm / stepBpm).toInt() * stepBpm
+            while (labelBpm <= maxBpm + stepBpm) {
+                if (labelBpm >= minBpm) {
+                    val normalizedY = (labelBpm - minBpm).toFloat() / bpmRange
+                    val y = (height - paddingBottom) + offsetY - (normalizedY * chartHeight * scaleY)
+                    
+                    if (y in (paddingTop - 1f)..(height - paddingBottom + 1f)) {
+                        drawContext.canvas.nativeCanvas.drawText(
+                            labelBpm.toString(),
+                            paddingLeft - 10f,
+                            y + 10f,
+                            paint
+                        )
+                        drawLine(
+                            Color.LightGray.copy(alpha = 0.3f),
+                            Offset(paddingLeft, y),
+                            Offset(width - paddingRight, y),
+                            1f
+                        )
+                    }
+                }
+                labelBpm += stepBpm
             }
 
             // Draw Data with Clipping
@@ -205,7 +224,7 @@ fun BpmGraphEnhanced(
                         val normalizedX = time.toFloat() / totalTime
                         val x = paddingLeft + offsetX + (normalizedX * chartWidth * scaleX)
                         val normalizedY = (bpm.toFloat() - minBpm.toFloat()) / bpmRange
-                        val y = (height - paddingBottom) - (normalizedY * chartHeight)
+                        val y = (height - paddingBottom) + offsetY - (normalizedY * chartHeight * scaleY)
                         
                         if (index == 0) moveTo(x, y) else lineTo(x, y)
                     }

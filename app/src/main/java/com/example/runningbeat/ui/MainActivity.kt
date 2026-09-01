@@ -154,6 +154,9 @@ class MainActivity : ComponentActivity() {
             // Record BPM every time it changes during a run
             LaunchedEffect(isRunning) {
                 if (isRunning) {
+                    if (StepTrackerService.preciseBpm.value > 0.0) {
+                        runBpmHistory.add(0L to StepTrackerService.preciseBpm.value)
+                    }
                     StepTrackerService.bpmUpdates.collect { preciseBpm ->
                         if (preciseBpm > 0.0) {
                             val elapsedMillis = System.currentTimeMillis() - runStartTime
@@ -199,8 +202,6 @@ class MainActivity : ComponentActivity() {
                             coroutineScope.launch {
                                 settingsRepository.saveIsCadenceOnlyMode(onlyCadence)
                                 if (onlyCadence) {
-                                    spotifyManager.disconnect()
-                                    isConnectedState.value = false
                                     isPlayingState.value = false
                                     StepTrackerService.resetCadence(0)
                                 } else {
@@ -214,15 +215,13 @@ class MainActivity : ComponentActivity() {
                             runBpmHistory.clear()
                             runStartTime = System.currentTimeMillis()
                             coroutineScope.launch {
-                                if (isCadenceOnly) {
-                                    StepTrackerService.resetCadence(0)
-                                } else {
+                                if (!isCadenceOnly) {
                                     val startingBpm = settingsRepository.startingBpmFlow.first()
-                                    // In music mode, we start at a valid BPM immediately
-                                    runBpmHistory.add(0L to startingBpm.toDouble())
-                                    StepTrackerService.resetCadence(startingBpm)
+                                    val currentLiveBpm = StepTrackerService.currentBpm.value
+                                    val bpmToUse = if (currentLiveBpm > 0) currentLiveBpm else startingBpm
+                                    
                                     spotifyManager.playBestMatchingTrack(
-                                        currentBpm = StepTrackerService.currentBpm.value,
+                                        currentBpm = bpmToUse,
                                         trackDao = trackDao,
                                         useFallback = useFallbackTracks,
                                         onError = { err ->
@@ -308,17 +307,21 @@ class MainActivity : ComponentActivity() {
                             useFallbackTracks = useFallbackTracks,
                             onBpmWindowChange = { min, max ->
                                 coroutineScope.launch { settingsRepository.saveBpmWindow(min, max) }
-                                if (startingBpm < min) {
-                                    coroutineScope.launch { settingsRepository.saveStartingBpm(min) }
-                                    StepTrackerService.resetBpmToStarting(min)
-                                } else if (startingBpm > max) {
-                                    coroutineScope.launch { settingsRepository.saveStartingBpm(max) }
-                                    StepTrackerService.resetBpmToStarting(max)
+                                if (!isCadenceOnly) {
+                                    if (startingBpm < min) {
+                                        coroutineScope.launch { settingsRepository.saveStartingBpm(min) }
+                                        StepTrackerService.resetBpmToStarting(min)
+                                    } else if (startingBpm > max) {
+                                        coroutineScope.launch { settingsRepository.saveStartingBpm(max) }
+                                        StepTrackerService.resetBpmToStarting(max)
+                                    }
                                 }
                             },
                             onStartingBpmChange = { value ->
                                 coroutineScope.launch { settingsRepository.saveStartingBpm(value) }
-                                StepTrackerService.resetBpmToStarting(value)
+                                if (!isCadenceOnly) {
+                                    StepTrackerService.resetBpmToStarting(value)
+                                }
                             },
                             onAllowSkippingChange = { value ->
                                 coroutineScope.launch { settingsRepository.saveAllowSkipping(value) }
