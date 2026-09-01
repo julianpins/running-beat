@@ -7,11 +7,14 @@ class CadenceCalculator(
 ) {
     private val stepTimestamps = ArrayDeque<Long>()
     private var smoothedBpm: Double = startingBpm.toDouble()
+    private var isInitialized: Boolean = startingBpm > 0
 
     private val smoothingFactor = 0.2
+    private val minSmoothed = 100.0
+    private val maxSmoothed = 200.0
 
     //in Nanoseconds
-    private val minWindow = 5_000_000_000L
+    private val minWindow = 4_000_000_000L
     private val maxWindow = 10_000_000_000L
 
     private val falseStepInterval = 200_000_000L
@@ -23,13 +26,22 @@ class CadenceCalculator(
             startingBpm = bpm
             if (stepTimestamps.isEmpty()) {
                 smoothedBpm = bpm.toDouble()
+                isInitialized = true
+            }
+        } else {
+            startingBpm = 0
+            if (stepTimestamps.isEmpty()) {
+                smoothedBpm = 0.0
+                isInitialized = false
             }
         }
     }
 
-    fun resetToStartingBpm() {
+    fun resetToStartingBpm(initialBpm: Int = startingBpm) {
         stepTimestamps.clear()
-        smoothedBpm = startingBpm.toDouble()
+        startingBpm = initialBpm
+        smoothedBpm = initialBpm.toDouble()
+        isInitialized = initialBpm > 0
     }
 
     fun processStep(timestamp: Long): Double {
@@ -54,22 +66,27 @@ class CadenceCalculator(
             stepTimestamps.removeFirst()
         }
 
-        if (stepTimestamps.size < 5) return smoothedBpm
+        if (stepTimestamps.size < 5) return if (isInitialized) smoothedBpm else 0.0
         val currentWindowDuration = stepTimestamps.peekLast()!! - stepTimestamps.peekFirst()!!
 
-        // 4. Minimum Window Guard: Only calculate a new raw BPM if we have accumulated at least 6s of data
+        // 4. Minimum Window Guard: Only calculate a new raw BPM if we have accumulated at least 5s of data
         if (currentWindowDuration >= minWindow) {
             val durationMinutes = currentWindowDuration / 60_000_000_000.0
             val rawBpm = (stepTimestamps.size - 1) / durationMinutes
 
-            smoothedBpm = (smoothingFactor * rawBpm) + ((1.0 - smoothingFactor) * smoothedBpm)
+            if (!isInitialized) {
+                smoothedBpm = rawBpm
+                isInitialized = true
+            } else {
+                smoothedBpm = (smoothingFactor * rawBpm) + ((1.0 - smoothingFactor) * smoothedBpm)
+            }
         }
-        if(smoothedBpm < 100) {
-            smoothedBpm = 100.0
+        
+        if (isInitialized) {
+            if (smoothedBpm < minSmoothed) smoothedBpm = minSmoothed
+            if (smoothedBpm > maxSmoothed) smoothedBpm = maxSmoothed
         }
-        if(smoothedBpm > 200) {
-            smoothedBpm = 200.0
-        }
+        
         return smoothedBpm
     }
 }

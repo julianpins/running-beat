@@ -38,7 +38,7 @@ fun CadenceScreen(
     onViewStats: () -> Unit,
     onToggleMode: (isCadenceOnly: Boolean) -> Unit,
     hasStats: Boolean,
-    isCadenceOnly: Boolean,
+    isCadenceOnly: Boolean
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
         // Top-Right Buttons (Help and Settings)
@@ -92,12 +92,12 @@ fun CadenceScreen(
                     Surface(
                         modifier = Modifier
                             .clickable(enabled = !isRunning) { onToggleMode(false) }
-                            .padding(vertical = 8.dp, horizontal = 16.dp),
+                            .padding(vertical = 8.dp, horizontal = 12.dp),
                         color = if (spotifySelected) MaterialTheme.colorScheme.primary else Color.Transparent,
                         shape = MaterialTheme.shapes.small
                     ) {
                         Text(
-                            text = "Spotify Sync",
+                            text = "Music-Synced Run",
                             modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
                             style = MaterialTheme.typography.labelLarge,
                             color = if (spotifySelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
@@ -107,14 +107,14 @@ fun CadenceScreen(
                     Surface(
                         modifier = Modifier
                             .clickable(enabled = !isRunning) { onToggleMode(true) }
-                            .padding(vertical = 8.dp, horizontal = 16.dp),
+                            .padding(vertical = 8.dp, horizontal = 12.dp),
                         color = if (isCadenceOnly) MaterialTheme.colorScheme.primary else Color.Transparent,
                         shape = MaterialTheme.shapes.small
                     ) {
                         Text(
-                            text = "Cadence Analysis",
+                            text = "Cadence Only",
                             modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                            style = MaterialTheme.typography.labelLarge,
+                            style = MaterialTheme.typography.labelMedium, // Smaller text style
                             color = if (isCadenceOnly) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
                             fontWeight = if (isCadenceOnly) FontWeight.Bold else FontWeight.Normal
                         )

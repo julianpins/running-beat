@@ -155,9 +155,10 @@ class MainActivity : ComponentActivity() {
             LaunchedEffect(isRunning) {
                 if (isRunning) {
                     StepTrackerService.bpmUpdates.collect { preciseBpm ->
-                        if (runStartTime == 0L) runStartTime = System.currentTimeMillis()
-                        val elapsedMillis = System.currentTimeMillis() - runStartTime
-                        runBpmHistory.add(elapsedMillis to preciseBpm)
+                        if (preciseBpm > 0.0) {
+                            val elapsedMillis = System.currentTimeMillis() - runStartTime
+                            runBpmHistory.add(elapsedMillis to preciseBpm)
+                        }
                     }
                 }
             }
@@ -201,15 +202,25 @@ class MainActivity : ComponentActivity() {
                                     spotifyManager.disconnect()
                                     isConnectedState.value = false
                                     isPlayingState.value = false
+                                    StepTrackerService.resetCadence(0)
+                                } else {
+                                    val startingBpm = settingsRepository.startingBpmFlow.first()
+                                    StepTrackerService.resetCadence(startingBpm)
                                 }
                             }
                         },
                         onStartRun = {
                             isRunningState.value = true
                             runBpmHistory.clear()
-                            runStartTime = 0L
-                            if (!isCadenceOnly) {
-                                coroutineScope.launch {
+                            runStartTime = System.currentTimeMillis()
+                            coroutineScope.launch {
+                                if (isCadenceOnly) {
+                                    StepTrackerService.resetCadence(0)
+                                } else {
+                                    val startingBpm = settingsRepository.startingBpmFlow.first()
+                                    // In music mode, we start at a valid BPM immediately
+                                    runBpmHistory.add(0L to startingBpm.toDouble())
+                                    StepTrackerService.resetCadence(startingBpm)
                                     spotifyManager.playBestMatchingTrack(
                                         currentBpm = StepTrackerService.currentBpm.value,
                                         trackDao = trackDao,
@@ -223,9 +234,12 @@ class MainActivity : ComponentActivity() {
                         },
                         onEndRun = {
                             // Capture one final data point at the exact moment the run ends
-                            if (runStartTime > 0) {
+                            if (runStartTime > 0 && StepTrackerService.preciseBpm.value > 0.0) {
                                 val finalElapsed = System.currentTimeMillis() - runStartTime
                                 runBpmHistory.add(finalElapsed to StepTrackerService.preciseBpm.value)
+                            }
+                            if (runBpmHistory.isEmpty()) {
+                                errorMessageState.value = "No steps detected during last run."
                             }
                             isRunningState.value = false
                             if (!isCadenceOnly) {

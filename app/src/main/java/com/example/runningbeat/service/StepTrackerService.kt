@@ -14,17 +14,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class StepTrackerService : Service() {
 
     private lateinit var sensorManager: StepSensorManager
     private lateinit var settingsRepository: SettingsRepository
-    private val cadenceCalculator = CadenceCalculator()
+    private val cadenceCalculator = CadenceCalculator(0) // Start with 0
     private val serviceScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
 
     override fun onCreate() {
@@ -43,12 +40,11 @@ class StepTrackerService : Service() {
         startForeground(NOTIFICATION_ID, notification)
         sensorManager.startListening()
 
+        // 1. Monitor starting BPM from settings
         serviceScope.launch {
-            settingsRepository.startingBpmFlow.collect { startingBpm ->
-                cadenceCalculator.updateStartingBpm(startingBpm)
-                if (_currentBpm.value == 0 || _currentBpm.value == startingBpm) {
-                    _currentBpm.value = startingBpm
-                }
+            settingsRepository.startingBpmFlow.collect { bpm ->
+                // This updates the local storage in calculator, but we use reset() for active run start
+                cadenceCalculator.updateStartingBpm(bpm)
             }
         }
 
@@ -59,6 +55,15 @@ class StepTrackerService : Service() {
                 _currentBpm.value = bpm.toInt()
                 _preciseBpm.value = bpm
                 _bpmUpdates.emit(bpm)
+            }
+        }
+
+        // 3. Listen for reset commands
+        serviceScope.launch {
+            _resetCommands.collect { initialBpm ->
+                cadenceCalculator.resetToStartingBpm(initialBpm)
+                _currentBpm.value = initialBpm
+                _preciseBpm.value = initialBpm.toDouble()
             }
         }
     }
@@ -89,14 +94,20 @@ class StepTrackerService : Service() {
         private const val CHANNEL_ID = "running_beat_channel"
         private const val NOTIFICATION_ID = 1001
 
-        private val _currentBpm = MutableStateFlow(155)
+        private val _currentBpm = MutableStateFlow(0)
         val currentBpm: StateFlow<Int> = _currentBpm.asStateFlow()
 
-        private val _preciseBpm = MutableStateFlow(155.0)
+        private val _preciseBpm = MutableStateFlow(0.0)
         val preciseBpm: StateFlow<Double> = _preciseBpm.asStateFlow()
 
-        private val _bpmUpdates = kotlinx.coroutines.flow.MutableSharedFlow<Double>()
+        private val _bpmUpdates = MutableSharedFlow<Double>()
         val bpmUpdates = _bpmUpdates.asSharedFlow()
+
+        private val _resetCommands = MutableSharedFlow<Int>()
+
+        suspend fun resetCadence(startingBpm: Int) {
+            _resetCommands.emit(startingBpm)
+        }
 
         fun resetBpmToStarting(startingBpm: Int) {
             _currentBpm.value = startingBpm
