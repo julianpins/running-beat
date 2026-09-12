@@ -32,10 +32,17 @@ fun SettingsDialog(
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
-            Text(
-                text = "Running Settings",
-                style = MaterialTheme.typography.titleLarge
-            )
+            Column {
+                Text(
+                    text = "Running Settings",
+                    style = MaterialTheme.typography.titleLarge
+                )
+                Text(
+                    text = "For music-Synced Run only.",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         },
         text = {
             Column(

@@ -1,5 +1,6 @@
 package com.example.runningbeat.service
 
+import android.R
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Service
@@ -33,7 +34,7 @@ class StepTrackerService : Service() {
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("RunningBeat Active")
             .setContentText("Tracking running cadence in background...")
-            .setSmallIcon(android.R.drawable.ic_media_play)
+            .setSmallIcon(R.drawable.ic_media_play)
             .setOngoing(true)
             .build()
 

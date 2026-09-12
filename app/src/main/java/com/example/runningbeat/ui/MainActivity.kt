@@ -25,11 +25,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.math.abs
 
 @Composable
 fun AutoSkipController(
     currentBpm: Int,
     playingBpm: Int?,
+    playingTitle: String?,
+    minBpm: Int,
+    maxBpm: Int,
     allowSkipping: Boolean,
     useFallback: Boolean,
     bpmDiffSwitch: Int,
@@ -42,10 +46,11 @@ fun AutoSkipController(
     var isSkipping by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
 
-    LaunchedEffect(playingBpm) {
+    LaunchedEffect(playingBpm, playingTitle) {
         if (playingBpm != null && playingBpm > 0) {
             lastTrackBpm = playingBpm
         }
+        shiftStartTime = 0L // Reset whenever the song changes
     }
 
     LaunchedEffect(currentBpm, allowSkipping) {
@@ -53,12 +58,15 @@ fun AutoSkipController(
             shiftStartTime = 0L
             return@LaunchedEffect
         }
+        
+        val targetBpm = currentBpm.coerceIn(minBpm, maxBpm)
+        
         if (lastTrackBpm <= 0) {
-            lastTrackBpm = currentBpm
+            lastTrackBpm = targetBpm
             return@LaunchedEffect
         }
 
-        val bpmDiff = kotlin.math.abs(currentBpm - lastTrackBpm)
+        val bpmDiff = abs(targetBpm - lastTrackBpm)
         if (bpmDiff >= bpmDiffSwitch) {
             val now = System.currentTimeMillis()
             if (shiftStartTime == 0L) {
@@ -67,23 +75,39 @@ fun AutoSkipController(
             }
             val elapsedSeconds = (now - shiftStartTime) / 1000L
             if (elapsedSeconds >= switchDelaySeconds) {
-                Log.d("AUTO_SKIP", "Delay reached! Triggering skip. Original BPM: $lastTrackBpm, New BPM: $currentBpm")
-                shiftStartTime = 0L
-                isSkipping = true
+                Log.d("AUTO_SKIP", "Delay reached! Checking for better match. Original BPM: $lastTrackBpm, Target BPM: $targetBpm")
+                
                 coroutineScope.launch {
                     try {
-                        val originalVolume = spotifyManager.getCurrentVolume()
-                        spotifyManager.fadeVolume(from = originalVolume, to = 0.0f, durationMs = 2000L)
-                        spotifyManager.playBestMatchingTrack(
-                            currentBpm = currentBpm,
+                        val hasBetter = spotifyManager.isBetterMatchAvailable(
+                            targetBpm = targetBpm,
+                            currentTrackBpm = lastTrackBpm,
                             trackDao = trackDao,
-                            useFallback = useFallback,
-                            onError = { err ->
-                                Log.e("AUTO_SKIP", "Failed to switch track: ${err.localizedMessage}")
-                            }
+                            useFallback = useFallback
                         )
-                        spotifyManager.fadeVolume(from = 0.0f, to = originalVolume, durationMs = 500L)
+                        
+                        if (hasBetter) {
+                            Log.d("AUTO_SKIP", "Better match found! Triggering skip.")
+                            shiftStartTime = 0L
+                            isSkipping = true
+                            
+                            val originalVolume = spotifyManager.getCurrentVolume()
+                            spotifyManager.fadeVolume(from = originalVolume, to = 0.0f, durationMs = 2000L)
+                            spotifyManager.playBestMatchingTrack(
+                                currentBpm = targetBpm,
+                                trackDao = trackDao,
+                                useFallback = useFallback,
+                                onError = { err ->
+                                    Log.e("AUTO_SKIP", "Failed to switch track: ${err.localizedMessage}")
+                                }
+                            )
+                            spotifyManager.fadeVolume(from = 0.0f, to = originalVolume, durationMs = 500L)
+                        } else {
+                            Log.d("AUTO_SKIP", "No better match available in database. Staying on current track.")
+                            shiftStartTime = 0L // Reset so we don't keep checking every tick
+                        }
                     } catch (e: Exception) {
+                        Log.e("AUTO_SKIP", "Error during skip check: ${e.localizedMessage}")
                     } finally {
                         isSkipping = false
                     }
@@ -177,6 +201,11 @@ class MainActivity : ComponentActivity() {
             val useFallbackTracks by settingsRepository.useFallbackTracksFlow.collectAsState(initial = true)
             val isCadenceOnly by settingsRepository.isCadenceOnlyModeFlow.collectAsState(initial = false)
 
+            // Synchronize state to SpotifyManager for external skip detection
+            LaunchedEffect(isRunning, isCadenceOnly) {
+                spotifyManager.setSyncState(isRunning, isCadenceOnly)
+            }
+
             val displayMessage = remember(appMessage, isSyncing) {
                 if (isSyncing) AppMessage("Loading your playlists...", false)
                 else appMessage
@@ -207,6 +236,7 @@ class MainActivity : ComponentActivity() {
                             }
                         },
                         onToggleMode = { onlyCadence ->
+                            Log.d("MAIN_ACTIVITY", "Toggle Mode: isCadenceOnly=$onlyCadence")
                             coroutineScope.launch {
                                 settingsRepository.saveIsCadenceOnlyMode(onlyCadence)
                                 if (onlyCadence) {
@@ -360,6 +390,9 @@ class MainActivity : ComponentActivity() {
                     AutoSkipController(
                         currentBpm = bpm,
                         playingBpm = playingBpm,
+                        playingTitle = playingTitle,
+                        minBpm = minBpm,
+                        maxBpm = maxBpm,
                         allowSkipping = allowSkipping && isRunning && !isCadenceOnly,
                         useFallback = useFallbackTracks,
                         bpmDiffSwitch = bpmDiffSwitch,
@@ -377,10 +410,12 @@ class MainActivity : ComponentActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == SpotifyManager.AUTH_TOKEN_REQUEST_CODE) {
+            Log.d("MAIN_ACTIVITY", "Auth result received. ResultCode: $resultCode")
             spotifyManager.handleAuthResponse(
                 resultCode = resultCode,
                 intent = data,
                 onConnected = {
+                    Log.d("MAIN_ACTIVITY", "Spotify connected successfully")
                     spotifyManager.pausePlayback()
 
                     spotifyManager.subscribeToPlayerState { isPlaying ->

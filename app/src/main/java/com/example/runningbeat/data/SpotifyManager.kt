@@ -113,6 +113,10 @@ class SpotifyManager(
     private var lastStateSnapshot: PlayerState? = null
     private var lastStateTime: Long = 0L
     private var isQueueing = false
+    
+    private var isRunning = false
+    private var isCadenceOnly = false
+    private val expectedUris = mutableListOf<String>()
 
     val currentlyPlayingBpm = MutableStateFlow<Int?>(null)
     val currentlyPlayingTitle = MutableStateFlow<String?>(null)
@@ -179,8 +183,8 @@ class SpotifyManager(
     }
 
     private fun onPlayerStateUpdated(state: PlayerState) {
-        val oldUri = lastStateSnapshot?.track?.uri
-        val newUri = state.track?.uri
+        val newUri = state.track?.uri?.toString()
+        val oldUri = lastStateSnapshot?.track?.uri?.toString()
 
         lastStateSnapshot = state
         lastStateTime = System.currentTimeMillis()
@@ -188,9 +192,33 @@ class SpotifyManager(
         if (newUri != null && newUri != oldUri) {
             currentlyPlayingTitle.value = state.track?.name
             managerScope.launch(Dispatchers.IO) {
-                val track = trackDao?.getTrackByUri(newUri.toString())
+                val track = trackDao?.getTrackByUri(newUri)
                 currentlyPlayingBpm.value = track?.bpm
+                
+                // Correction Logic: Check if the new track was expected by the App
+                withContext(Dispatchers.Main) {
+                    if (isRunning && !isCadenceOnly) {
+                        if (!expectedUris.contains(newUri)) {
+                            Log.d(TAG, "[TRACK_CHANGE] Unexpected URI: $newUri. (Expected list: $expectedUris). Correcting...")
+                            val getBpm = getCurrentBpm
+                            val dao = trackDao
+                            if (getBpm != null && dao != null) {
+                                playBestMatchingTrack(getBpm(), dao, useFallback)
+                            }
+                        } else {
+                            Log.d(TAG, "[TRACK_CHANGE] Valid expected transition to: $newUri")
+                        }
+                    }
+                }
             }
+        }
+    }
+
+    fun setSyncState(isRunning: Boolean, isCadenceOnly: Boolean) {
+        this.isRunning = isRunning
+        this.isCadenceOnly = isCadenceOnly
+        if (!isRunning) {
+            expectedUris.clear()
         }
     }
 
@@ -351,7 +379,16 @@ class SpotifyManager(
     ) = withContext(Dispatchers.IO) {
         try {
             val selected = findBestTrack(currentBpm, trackDao, useFallback) ?: return@withContext
+            
             withContext(Dispatchers.Main) {
+                if (action == PlaybackAction.PLAY) {
+                    expectedUris.clear()
+                }
+                if (!expectedUris.contains(selected.uri)) {
+                    expectedUris.add(selected.uri)
+                    if (expectedUris.size > 5) expectedUris.removeAt(0)
+                }
+
                 val result = CompletableDeferred<Unit>()
                 val call = when (action) {
                     PlaybackAction.PLAY -> spotifyAppRemote?.playerApi?.play(selected.uri)
@@ -373,6 +410,18 @@ class SpotifyManager(
         } catch (e: Exception) {
             withContext(Dispatchers.Main) { onError(e) }
         }
+    }
+
+    suspend fun isBetterMatchAvailable(
+        targetBpm: Int,
+        currentTrackBpm: Int,
+        trackDao: TrackDao,
+        useFallback: Boolean
+    ): Boolean = withContext(Dispatchers.IO) {
+        val bestTrack = findBestTrack(targetBpm, trackDao, useFallback) ?: return@withContext false
+        val currentDelta = abs(currentTrackBpm - targetBpm)
+        val bestDelta = abs(bestTrack.bpm - targetBpm)
+        return@withContext bestDelta < currentDelta
     }
 
     suspend fun playBestMatchingTrack(
@@ -401,5 +450,6 @@ class SpotifyManager(
         lastQueuedTrackUri = null
         currentlyPlayingBpm.value = null
         currentlyPlayingTitle.value = null
+        expectedUris.clear()
     }
 }
