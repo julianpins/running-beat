@@ -25,3 +25,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "RunningBeat"
 include(":app")
+include(":shared")

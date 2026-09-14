@@ -16,15 +16,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
-import com.example.runningbeat.data.SettingsRepository
-import com.example.runningbeat.data.SpotifyManager
-import com.example.runningbeat.data.TrackDao
-import com.example.runningbeat.data.AppDatabase
+import com.example.runningbeat.data.*
 import com.example.runningbeat.service.StepTrackerService
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlin.math.abs
 
 @Composable
@@ -39,7 +34,7 @@ fun AutoSkipController(
     bpmDiffSwitch: Int,
     switchDelaySeconds: Int,
     trackDao: TrackDao,
-    spotifyManager: SpotifyManager,
+    spotifyManager: AndroidSpotifyService,
 ) {
     var lastTrackBpm by remember { mutableIntStateOf(0) }
     var shiftStartTime by remember { mutableLongStateOf(0L) }
@@ -103,8 +98,8 @@ fun AutoSkipController(
                             )
                             spotifyManager.fadeVolume(from = 0.0f, to = originalVolume, durationMs = 500L)
                         } else {
-                            Log.d("AUTO_SKIP", "No better match available in database. Staying on current track.")
-                            shiftStartTime = 0L // Reset so we don't keep checking every tick
+                            Log.d("AUTO_SKIP", "No better match available. Staying on current track.")
+                            shiftStartTime = 0L
                         }
                     } catch (e: Exception) {
                         Log.e("AUTO_SKIP", "Error during skip check: ${e.localizedMessage}")
@@ -119,12 +114,10 @@ fun AutoSkipController(
     }
 }
 
-data class AppMessage(val text: String, val isError: Boolean)
-
 class MainActivity : ComponentActivity() {
 
-    private lateinit var spotifyManager: SpotifyManager
-    private lateinit var settingsRepository: SettingsRepository
+    private lateinit var spotifyManager: AndroidSpotifyService
+    private lateinit var settingsRepository: AndroidSettingsRepository
     private lateinit var trackDao: TrackDao
 
     private var appMessageState = mutableStateOf<AppMessage?>(null)
@@ -147,13 +140,12 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        settingsRepository = SettingsRepository(applicationContext)
+        settingsRepository = AndroidSettingsRepository(applicationContext)
 
-        // Persistent Room DB pre-populated with fallback_tracks.db from assets
-        val db = AppDatabase.getDatabase(applicationContext)
+        val db = DatabaseFactory.getDatabase(applicationContext)
         trackDao = db.trackDao()
 
-        spotifyManager = SpotifyManager(
+        spotifyManager = AndroidSpotifyService(
             context = this,
             clientId = "025f3a3fa8154feabc32f98af22f747c",
             redirectUri = "cadencerunner://callback"
@@ -177,7 +169,6 @@ class MainActivity : ComponentActivity() {
             val runBpmHistory = remember { mutableStateListOf<Pair<Long, Double>>() }
             var runStartTime by remember { mutableLongStateOf(0L) }
 
-            // Record BPM every time it changes during a run
             LaunchedEffect(isRunning) {
                 if (isRunning) {
                     if (StepTrackerService.preciseBpm.value > 0.0) {
@@ -201,7 +192,6 @@ class MainActivity : ComponentActivity() {
             val useFallbackTracks by settingsRepository.useFallbackTracksFlow.collectAsState(initial = true)
             val isCadenceOnly by settingsRepository.isCadenceOnlyModeFlow.collectAsState(initial = false)
 
-            // Synchronize state to SpotifyManager for external skip detection
             LaunchedEffect(isRunning, isCadenceOnly) {
                 spotifyManager.setSyncState(isRunning, isCadenceOnly)
             }
@@ -232,11 +222,10 @@ class MainActivity : ComponentActivity() {
                         onConnectSpotify = {
                             if (!isSyncing) {
                                 appMessageState.value = null
-                                spotifyManager.authorize(this@MainActivity)
+                                spotifyManager.authorize()
                             }
                         },
                         onToggleMode = { onlyCadence ->
-                            Log.d("MAIN_ACTIVITY", "Toggle Mode: isCadenceOnly=$onlyCadence")
                             coroutineScope.launch {
                                 settingsRepository.saveIsCadenceOnlyMode(onlyCadence)
                                 if (onlyCadence) {
@@ -270,7 +259,6 @@ class MainActivity : ComponentActivity() {
                             }
                         },
                         onEndRun = {
-                            // Capture one final data point at the exact moment the run ends
                             if (runStartTime > 0 && StepTrackerService.preciseBpm.value > 0.0) {
                                 val finalElapsed = System.currentTimeMillis() - runStartTime
                                 runBpmHistory.add(finalElapsed to StepTrackerService.preciseBpm.value)
@@ -285,7 +273,6 @@ class MainActivity : ComponentActivity() {
                                         val currentVol = spotifyManager.getCurrentVolume()
                                         spotifyManager.fadeVolume(from = currentVol, to = 0.0f, durationMs = 1500L)
                                         spotifyManager.pausePlayback()
-                                        // Reset volume for next time (app remote might keep it at 0 otherwise)
                                         spotifyManager.fadeVolume(from = 0.0f, to = currentVol, durationMs = 0L)
                                     } catch (e: Exception) {
                                         spotifyManager.pausePlayback()
@@ -295,7 +282,6 @@ class MainActivity : ComponentActivity() {
                         },
                         onPlayPause = {
                             if (isSyncing || isCadenceOnly) return@CadenceScreen
-
                             if (isPlaying) {
                                 spotifyManager.pausePlayback { err ->
                                     appMessageState.value = AppMessage(err.localizedMessage ?: "Unknown Error", true)
@@ -409,17 +395,17 @@ class MainActivity : ComponentActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == SpotifyManager.AUTH_TOKEN_REQUEST_CODE) {
-            Log.d("MAIN_ACTIVITY", "Auth result received. ResultCode: $resultCode")
+        if (requestCode == AndroidSpotifyService.AUTH_TOKEN_REQUEST_CODE) {
             spotifyManager.handleAuthResponse(
                 resultCode = resultCode,
                 intent = data,
                 onConnected = {
-                    Log.d("MAIN_ACTIVITY", "Spotify connected successfully")
                     spotifyManager.pausePlayback()
 
-                    spotifyManager.subscribeToPlayerState { isPlaying ->
-                        isPlayingState.value = isPlaying
+                    lifecycleScope.launch {
+                        spotifyManager.isPlaying.collect { isPlaying ->
+                            isPlayingState.value = isPlaying
+                        }
                     }
 
                     lifecycleScope.launch {
@@ -429,8 +415,6 @@ class MainActivity : ComponentActivity() {
                             val maxBpm = settingsRepository.maxBpmFlow.first()
                             val useFallback = settingsRepository.useFallbackTracksFlow.first()
 
-                            // Set up observer BEFORE potentially slow sync
-                            // After
                             spotifyManager.setupAutoQueue(
                                 trackDao = trackDao,
                                 getCurrentBpm = { StepTrackerService.currentBpm.value },
@@ -446,7 +430,6 @@ class MainActivity : ComponentActivity() {
                                     appMessageState.value = AppMessage(warningText, false)
                                 })
 
-                            logAllDatabaseTracks(trackDao)
                         } catch (e: Exception) {
                             appMessageState.value = AppMessage("Failed to load playlists: ${e.localizedMessage}", true)
                         } finally {
@@ -462,30 +445,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private suspend fun logAllDatabaseTracks(trackDao: TrackDao) {
-        withContext(Dispatchers.IO) {
-            val tracks = trackDao.getAllTracks()
-
-            Log.d("DB_CHECK", "==================================================")
-            Log.d("DB_CHECK", "TOTAL TRACKS IN DATABASE: ${tracks.size}")
-            Log.d("DB_CHECK", "==================================================")
-
-            if (tracks.isEmpty()) {
-                Log.d("DB_CHECK", "⚠️ DATABASE IS EMPTY!")
-                return@withContext
-            }
-
-            tracks.forEachIndexed { index, track ->
-                Log.d(
-                    "DB_CHECK",
-                    "#${index + 1} | BPM: ${track.bpm} | Fallback: ${track.isFallback} | " +
-                            "Title: \"${track.title}\" | Artist: \"${track.artist}\" | URI: ${track.uri}"
-                )
-            }
-
-            Log.d("DB_CHECK", "==================================================")
-        }
-    }
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun requestRequiredPermissions() {
         val permissionsToRequest = mutableListOf(Manifest.permission.ACTIVITY_RECOGNITION)
