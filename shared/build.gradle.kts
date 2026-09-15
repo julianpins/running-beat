@@ -7,21 +7,29 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
+val isXcodeEnvironment = providers.environmentVariable("XCODE_VERSION_ACTUAL").isPresent || 
+                          providers.environmentVariable("SDK_NAME").isPresent
+
+val isXcodeAvailable = providers.gradleProperty("ios.enabled").map { it.toBoolean() }.getOrElse(false) || 
+                       isXcodeEnvironment
+
 kotlin {
     androidTarget {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
         }
     }
-    
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "shared"
-            isStatic = true
+
+    if (isXcodeAvailable) {
+        listOf(
+            iosX64(),
+            iosArm64(),
+            iosSimulatorArm64()
+        ).forEach { iosTarget ->
+            iosTarget.binaries.framework {
+                baseName = "shared"
+                isStatic = true
+            }
         }
     }
     
@@ -46,7 +54,7 @@ kotlin {
             implementation(libs.retrofit.converter.gson)
             
             // For the Spotify App Remote AAR
-            implementation(fileTree(mapOf("dir" to "../app/libs", "include" to listOf("*.aar", "*.jar"))))
+            compileOnly(fileTree(mapOf("dir" to "../app/libs", "include" to listOf("*.aar", "*.jar"))))
         }
         iosMain.dependencies {}
     }
@@ -58,11 +66,12 @@ compose.resources {
 }
 
 dependencies {
-    add("kspCommonMainMetadata", libs.androidx.room.compiler)
     add("kspAndroid", libs.androidx.room.compiler)
-    add("kspIosX64", libs.androidx.room.compiler)
-    add("kspIosArm64", libs.androidx.room.compiler)
-    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
+    if (isXcodeAvailable) {
+        add("kspIosX64", libs.androidx.room.compiler)
+        add("kspIosArm64", libs.androidx.room.compiler)
+        add("kspIosSimulatorArm64", libs.androidx.room.compiler)
+    }
 }
 
 android {

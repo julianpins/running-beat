@@ -34,6 +34,12 @@ interface TrackDao {
 }
 
 @Database(entities = [TrackEntity::class], version = 1, exportSchema = false)
+@ConstructedBy(AppDatabaseConstructor::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun trackDao(): TrackDao
+}
+
+@Suppress("KotlinNoActualForExpect")
+expect object AppDatabaseConstructor : RoomDatabaseConstructor<AppDatabase> {
+    override fun initialize(): AppDatabase
 }

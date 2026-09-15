@@ -12,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.layout
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -186,13 +185,7 @@ fun CadenceScreen(
                 }
             }
 
-            // Dynamic Content starts here, but we use a custom layout to ignore its height for the parent's centering
-            Box(modifier = Modifier.layout { measurable, constraints ->
-                val placeable = measurable.measure(constraints)
-                layout(placeable.width, 0) {
-                    placeable.placeRelative(0, 0)
-                }
-            }) {
+            Box {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Spacer(modifier = Modifier.height(24.dp))
 
